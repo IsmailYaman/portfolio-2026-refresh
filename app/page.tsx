@@ -31,8 +31,16 @@ function Hero() {
           </h1>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: "var(--ev-space-5)", paddingTop: "10px" }}>
-          <p className="ev-label" style={{ margin: 0, maxWidth: "26ch" }}>
-            Hi, I am {SITE.name}, {SITE.tagline}.
+          <p className="ev-label" style={{ margin: 0, maxWidth: "34ch" }}>
+            Hi, I&rsquo;m currently working at{" "}
+            <a href="https://notive.nl" style={{ color: "var(--ev-text-primary)", textDecoration: "underline", textUnderlineOffset: "3px" }}>
+              Notive
+            </a>{" "}
+            as a fullstack developer and freelancer at{" "}
+            <a href="https://yamotion.com" style={{ color: "var(--ev-text-primary)", textDecoration: "underline", textUnderlineOffset: "3px" }}>
+              YAMOTION
+            </a>
+            .
           </p>
           <div style={{ position: "relative", width: "100%", aspectRatio: "4 / 5" }}>
             <Image src="/portrait.png" alt="Portrait of Ismail Kayadelen" fill sizes="(max-width: 768px) 100vw, 34vw" style={{ objectFit: "cover" }} priority />

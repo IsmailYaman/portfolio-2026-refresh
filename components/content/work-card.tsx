@@ -40,6 +40,7 @@ export function WorkCard({
         setHover(false);
         setCursorLabel(null);
       }}
+      onClick={() => setCursorLabel(null)}
       style={{ display: "flex", flexDirection: "column", gap: "var(--ev-space-4)", color: "inherit", ...style }}
       {...rest}
     >
