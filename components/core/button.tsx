@@ -33,8 +33,8 @@ const SIZES: Record<string, React.CSSProperties> = {
 function look(variant: string, hover: boolean, inverse: boolean): React.CSSProperties {
   if (variant === "solid")
     return inverse
-      ? { background: hover ? "var(--ev-n-100)" : "var(--ev-paper)", color: "var(--ev-ink)", borderColor: "var(--ev-accent)" }
-      : { background: hover ? "var(--ev-n-700)" : "var(--ev-ink)", color: "var(--ev-paper)", borderColor: "var(--ev-accent)" };
+      ? { background: hover ? "var(--ev-n-100)" : "var(--ev-paper)", color: "var(--ev-ink)" }
+      : { background: hover ? "var(--ev-n-700)" : "var(--ev-ink)", color: "var(--ev-paper)" };
   if (variant === "outline")
     return inverse
       ? {
