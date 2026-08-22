@@ -1,0 +1,39 @@
+<!-- @dsCard group="Components" viewport="700x400" name="Content" subtitle="WorkCard, BlogCard, ExperienceRow, AwardRow, CaseMeta" -->
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>body{padding:22px 24px;background:var(--ev-paper)}
+.grid{display:flex;flex-wrap:wrap;gap:18px;align-items:center}
+.stack{display:flex;flex-direction:column;gap:18px}
+.cap{font-family:var(--ev-font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ev-n-400)}
+</style>
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.24.7/babel.min.js"></script>
+<script src="../../_ds_bundle.js"></script>
+<script src="../../_dev/ds-fallback.js"></script>
+</head>
+<body><div id="root"></div>
+<script type="text/babel" data-presets="react">
+const DS = (() => { for (const k of Object.keys(window)) { try { const v = window[k]; if (v && typeof v === "object" && v.Button && v.WorkCard) return v; } catch (e) {} } return {}; })();
+const { WorkCard, BlogCard, ExperienceRow, AwardRow, CaseMeta } = DS;
+function Demo() {
+  return (
+    <div className="stack" style={{gap:22}}>
+      <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:20}}>
+        <WorkCard title="Vision Craft" category="Branding" year="2022" image="../../assets/images/work-vision-craft-thumb.png" />
+        <BlogCard title="The art of urban branding" category="Branding" date="12 Mar 2025" image="../../assets/images/studio-desk.jpg" />
+      </div>
+      <div>
+        <ExperienceRow header />
+        <ExperienceRow />
+        <ExperienceRow title="Web UI designer" company="Admart Hub, NYC" role="Website designer" year="2022" />
+      </div>
+      <AwardRow />
+      <CaseMeta />
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById("root")).render(<Demo />);
+</script>
+</body></html>

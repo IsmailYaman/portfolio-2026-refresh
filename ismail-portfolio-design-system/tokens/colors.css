@@ -1,0 +1,47 @@
+:root{
+  /* ── Core monochrome. The system is black-on-white; colour comes from imagery. ── */
+  --ev-paper:            #FFFFFF;
+  --ev-paper-tint:       #F5F5F3;
+  --ev-ink:              #050505;
+  --ev-ink-true:         #000000;
+
+  /* ── Neutral scale (cool-neutral, no blue cast) ── */
+  --ev-n-50:  #F7F7F6;
+  --ev-n-100: #EDEDEB;
+  --ev-n-200: #DCDCDA;
+  --ev-n-300: #C2C2BF;
+  --ev-n-400: #9A9A97;
+  --ev-n-500: #6E6E6B;
+  --ev-n-600: #4F4F4D;
+  --ev-n-700: #2E2E2D;
+  --ev-n-800: #1A1A19;
+  --ev-n-900: #0D0D0D;
+
+  /* ── Accents. Sampled from the site's own artwork. Used at ~5% of surface. ── */
+  --ev-electric:  #1F2BFF;   /* poster blue — links, focus, selection */
+  --ev-signal:    #FF2C00;   /* flare red — live/attention dot */
+  --ev-magenta:   #FE004D;   /* hero portrait magenta — hover flood */
+
+  /* ── Semantic aliases ── */
+  --ev-surface:          var(--ev-paper);
+  --ev-surface-alt:      var(--ev-paper-tint);
+  --ev-surface-inverse:  var(--ev-ink);
+  --ev-surface-media:    var(--ev-n-100);
+
+  --ev-text-primary:     var(--ev-ink);
+  --ev-text-secondary:   var(--ev-n-500);
+  --ev-text-muted:       var(--ev-n-400);
+  --ev-text-on-inverse:  var(--ev-paper);
+  --ev-text-on-inverse-secondary: rgba(255,255,255,.56);
+
+  --ev-border-hairline:  var(--ev-n-200);
+  --ev-border-strong:    var(--ev-ink);
+  --ev-border-inverse:   rgba(255,255,255,.16);
+
+  --ev-link:             var(--ev-ink);
+  --ev-link-hover:       var(--ev-electric);
+  --ev-focus:            var(--ev-electric);
+
+  --ev-overlay-scrim:    rgba(5,5,5,.78);
+  --ev-overlay-media:    linear-gradient(180deg, rgba(5,5,5,0) 40%, rgba(5,5,5,.72) 100%);
+}

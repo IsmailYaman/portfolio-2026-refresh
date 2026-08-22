@@ -1,0 +1,64 @@
+/* ============================================================
+   NOTIVE — Base element styles & typographic helpers.
+   Lightweight resets + brand defaults. Helper classes are optional
+   conveniences; components themselves rely on tokens directly.
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--text-body);
+  background: var(--surface-page);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-display);
+  color: var(--text-strong);
+  margin: 0;
+  letter-spacing: var(--ls-heading);
+  line-height: var(--lh-heading);
+  font-weight: var(--fw-bold);
+  text-wrap: balance;
+}
+
+p { margin: 0; text-wrap: pretty; }
+
+a { color: var(--text-link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ---- Heading helper classes ---- */
+.nv-display { font-family: var(--font-display); font-weight: var(--fw-extrabold);
+  font-size: var(--fs-display); line-height: var(--lh-tight); letter-spacing: var(--ls-display);
+  color: var(--text-strong); }
+.nv-h1 { font-family: var(--font-display); font-weight: var(--fw-bold);
+  font-size: var(--fs-h1); line-height: var(--lh-snug); letter-spacing: var(--ls-heading); }
+.nv-h2 { font-family: var(--font-display); font-weight: var(--fw-bold);
+  font-size: var(--fs-h2); line-height: var(--lh-heading); letter-spacing: var(--ls-heading); }
+.nv-h3 { font-family: var(--font-display); font-weight: var(--fw-bold);
+  font-size: var(--fs-h3); line-height: var(--lh-heading); letter-spacing: var(--ls-heading); }
+.nv-h4 { font-family: var(--font-display); font-weight: var(--fw-bold);
+  font-size: var(--fs-h4); line-height: var(--lh-heading); }
+
+/* ---- Body helpers ---- */
+.nv-lead { font-family: var(--font-body); font-size: var(--fs-body-lg); line-height: var(--lh-relaxed); color: var(--text-body); }
+.nv-body { font-family: var(--font-body); font-size: var(--fs-body); line-height: var(--lh-body); }
+.nv-small { font-size: var(--fs-sm); line-height: var(--lh-body); }
+
+/* ---- Eyebrow / section label (uppercase, used with a mark bullet) ---- */
+.nv-eyebrow {
+  font-family: var(--font-display);
+  font-weight: var(--fw-extrabold);
+  font-size: var(--fs-overline);
+  letter-spacing: var(--ls-overline);
+  text-transform: uppercase;
+  color: var(--text-strong);
+}
+.nv-eyebrow--sky { color: var(--sky-600); }
+
+/* selection */
+::selection { background: var(--sky-blue); color: var(--white); }

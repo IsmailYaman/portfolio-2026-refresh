@@ -1,0 +1,405 @@
+@import "tailwindcss";
+
+/* ── Design tokens, ported from ismail-portfolio-design-system/tokens/*.css ── */
+
+:root {
+  /* Core monochrome. The system is black-on-white; colour comes from imagery. */
+  --ev-paper: #ffffff;
+  --ev-paper-tint: #f5f5f3;
+  --ev-ink: #050505;
+  --ev-ink-true: #000000;
+
+  /* Neutral scale (cool-neutral, no blue cast) */
+  --ev-n-50: #f7f7f6;
+  --ev-n-100: #ededeb;
+  --ev-n-200: #dcdcda;
+  --ev-n-300: #c2c2bf;
+  --ev-n-400: #9a9a97;
+  --ev-n-500: #6e6e6b;
+  --ev-n-600: #4f4f4d;
+  --ev-n-700: #2e2e2d;
+  --ev-n-800: #1a1a19;
+  --ev-n-900: #0d0d0d;
+
+  /* Accents. Sampled from the source artwork. Used at ~5% of surface. */
+  --ev-accent: #ff6b00; /* bright orange — links, focus, selection */
+  --ev-signal: #ff2c00; /* flare red — live/attention dot */
+  --ev-magenta: #fe004d; /* hero portrait magenta — hover flood */
+
+  /* Semantic aliases */
+  --ev-surface: var(--ev-paper);
+  --ev-surface-alt: var(--ev-paper-tint);
+  --ev-surface-inverse: var(--ev-ink);
+  --ev-surface-media: var(--ev-n-100);
+
+  --ev-text-primary: var(--ev-ink);
+  --ev-text-secondary: var(--ev-n-500);
+  --ev-text-muted: var(--ev-n-400);
+  --ev-text-on-inverse: var(--ev-paper);
+  --ev-text-on-inverse-secondary: rgba(255, 255, 255, 0.56);
+
+  --ev-border-hairline: var(--ev-n-200);
+  --ev-border-strong: var(--ev-ink);
+  --ev-border-inverse: rgba(255, 255, 255, 0.16);
+
+  --ev-link: var(--ev-ink);
+  --ev-link-hover: var(--ev-accent);
+  --ev-focus: var(--ev-accent);
+
+  --ev-overlay-scrim: rgba(5, 5, 5, 0.78);
+  --ev-overlay-media: linear-gradient(180deg, rgba(5, 5, 5, 0) 40%, rgba(5, 5, 5, 0.72) 100%);
+
+  /* Typography — font families are supplied by next/font (see app/layout.tsx) */
+  --ev-font-display: var(--font-archivo), "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --ev-font-text: var(--font-archivo), "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --ev-font-mono: var(--font-jetbrains-mono), ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --ev-w-regular: 400;
+  --ev-w-medium: 500;
+  --ev-w-semi: 600;
+  --ev-w-bold: 700;
+  --ev-w-black: 800;
+
+  --ev-size-hero: clamp(64px, 13.2vw, 220px);
+  --ev-size-display: clamp(48px, 8vw, 120px);
+  --ev-size-h1: clamp(40px, 5.4vw, 76px);
+  --ev-size-h2: clamp(32px, 3.6vw, 52px);
+  --ev-size-h3: clamp(24px, 2.2vw, 34px);
+  --ev-size-h4: 20px;
+
+  --ev-size-lead: 19px;
+  --ev-size-body: 16px;
+  --ev-size-sm: 14px;
+  --ev-size-label: 12px; /* mono, uppercase, tracked */
+  --ev-size-micro: 10px;
+
+  --ev-lh-hero: 0.84;
+  --ev-lh-tight: 0.94;
+  --ev-lh-snug: 1.16;
+  --ev-lh-body: 1.55;
+  --ev-lh-label: 1.5;
+
+  --ev-ls-hero: -0.045em;
+  --ev-ls-display: -0.035em;
+  --ev-ls-heading: -0.02em;
+  --ev-ls-body: -0.005em;
+  --ev-ls-label: 0.14em; /* mono eyebrows / meta */
+  --ev-ls-mono: 0.02em;
+
+  /* Spacing */
+  --ev-space-0: 0px;
+  --ev-space-1: 4px;
+  --ev-space-2: 8px;
+  --ev-space-3: 12px;
+  --ev-space-4: 16px;
+  --ev-space-5: 24px;
+  --ev-space-6: 32px;
+  --ev-space-7: 48px;
+  --ev-space-8: 64px;
+  --ev-space-9: 96px;
+  --ev-space-10: 144px;
+  --ev-space-11: 200px;
+
+  /* Layout */
+  --ev-page-max: 1440px;
+  --ev-content-max: 1240px;
+  --ev-measure: 62ch;
+  --ev-gutter: clamp(20px, 4vw, 64px);
+  --ev-section-y: clamp(72px, 10vw, 160px);
+  --ev-grid-gap: clamp(16px, 2vw, 32px);
+  --ev-rule: 1px;
+
+  /* Radii — the system is fully square. Every token is 0 by decision. */
+  --ev-radius-none: 0px;
+  --ev-radius-sm: 0px;
+  --ev-radius-md: 0px;
+  --ev-radius-lg: 0px;
+  --ev-radius-xl: 0px;
+  --ev-radius-pill: 0px;
+
+  /* Elevation — near-absent. Contrast and rules do the work of shadows. */
+  --ev-shadow-none: none;
+  --ev-shadow-sm: 0 1px 2px rgba(5, 5, 5, 0.06);
+  --ev-shadow-md: 0 12px 32px -12px rgba(5, 5, 5, 0.18);
+  --ev-shadow-lift: 0 24px 60px -24px rgba(5, 5, 5, 0.34);
+  --ev-focus-ring: 0 0 0 2px var(--ev-paper), 0 0 0 4px var(--ev-accent);
+
+  /* Motion */
+  --ev-dur-fast: 140ms;
+  --ev-dur-base: 240ms;
+  --ev-dur-slow: 520ms;
+  --ev-dur-reveal: 900ms;
+  --ev-ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ev-ease-inout: cubic-bezier(0.65, 0.05, 0.36, 1);
+  --ev-ease-expo: cubic-bezier(0.16, 1, 0.3, 1); /* long editorial reveals */
+  --ev-marquee-dur: 28s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --ev-dur-fast: 0ms;
+    --ev-dur-base: 0ms;
+    --ev-dur-slow: 0ms;
+    --ev-dur-reveal: 0ms;
+    --ev-marquee-dur: 0s;
+  }
+}
+
+/* ── Base ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  background: var(--ev-surface);
+  color: var(--ev-text-primary);
+  font-family: var(--ev-font-text);
+  font-size: var(--ev-size-body);
+  line-height: var(--ev-lh-body);
+  letter-spacing: var(--ev-ls-body);
+  -webkit-font-smoothing: antialiased;
+  text-wrap: pretty;
+  overflow-x: hidden;
+}
+::selection {
+  background: var(--ev-accent);
+  color: var(--ev-paper);
+}
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+a {
+  color: var(--ev-link);
+  text-decoration: none;
+  transition: color var(--ev-dur-fast) var(--ev-ease-out);
+}
+a:hover {
+  color: var(--ev-link-hover);
+}
+:focus-visible {
+  outline: none;
+  box-shadow: var(--ev-focus-ring);
+}
+button {
+  font: inherit;
+  color: inherit;
+}
+
+/* ── Layout shell ── */
+.ev-shell {
+  max-width: var(--ev-page-max);
+  margin-inline: auto;
+}
+
+/* ── Helper classes ── */
+.ev-hero,
+.ev-display,
+.ev-h1,
+.ev-h2,
+.ev-h3 {
+  font-family: var(--ev-font-display);
+  font-weight: var(--ev-w-black);
+  text-transform: uppercase;
+  margin: 0;
+}
+.ev-hero {
+  font-size: var(--ev-size-hero);
+  line-height: var(--ev-lh-hero);
+  letter-spacing: var(--ev-ls-hero);
+}
+.ev-display {
+  font-size: var(--ev-size-display);
+  line-height: var(--ev-lh-hero);
+  letter-spacing: var(--ev-ls-display);
+}
+.ev-h1 {
+  font-size: var(--ev-size-h1);
+  line-height: var(--ev-lh-tight);
+  letter-spacing: var(--ev-ls-display);
+}
+.ev-h2 {
+  font-size: var(--ev-size-h2);
+  line-height: var(--ev-lh-tight);
+  letter-spacing: var(--ev-ls-heading);
+}
+.ev-h3 {
+  font-size: var(--ev-size-h3);
+  line-height: var(--ev-lh-snug);
+  letter-spacing: var(--ev-ls-heading);
+  font-weight: var(--ev-w-bold);
+}
+.ev-h4 {
+  font-family: var(--ev-font-display);
+  font-size: var(--ev-size-h4);
+  font-weight: var(--ev-w-bold);
+  line-height: var(--ev-lh-snug);
+  letter-spacing: var(--ev-ls-heading);
+  text-transform: uppercase;
+  margin: 0;
+}
+.ev-lead {
+  font-size: var(--ev-size-lead);
+  line-height: 1.45;
+  margin: 0;
+}
+.ev-body {
+  font-size: var(--ev-size-body);
+  line-height: var(--ev-lh-body);
+  margin: 0;
+}
+.ev-label {
+  font-family: var(--ev-font-mono);
+  font-size: var(--ev-size-label);
+  font-weight: var(--ev-w-regular);
+  text-transform: uppercase;
+  letter-spacing: var(--ev-ls-label);
+  line-height: var(--ev-lh-label);
+  color: var(--ev-text-secondary);
+}
+.ev-meta {
+  font-family: var(--ev-font-mono);
+  font-size: var(--ev-size-sm);
+  letter-spacing: var(--ev-ls-mono);
+  color: var(--ev-text-secondary);
+}
+.ev-rule {
+  height: var(--ev-rule);
+  background: var(--ev-border-hairline);
+  border: 0;
+  margin: 0;
+}
+.ev-container {
+  width: 100%;
+  max-width: var(--ev-page-max);
+  margin-inline: auto;
+  padding-inline: var(--ev-gutter);
+}
+.ev-section {
+  padding-block: var(--ev-section-y);
+}
+.ev-inverse {
+  background: var(--ev-surface-inverse);
+  color: var(--ev-text-on-inverse);
+}
+.ev-inverse .ev-label {
+  color: var(--ev-text-on-inverse-secondary);
+}
+.ev-inverse a {
+  color: var(--ev-paper);
+}
+
+/* ── Responsive layout helpers ──
+   The inline-style grids elsewhere assume a 1440px canvas; these classes carry
+   the few asymmetric/multi-column layouts down to phone widths. Symmetric
+   card/tile grids don't need a class — they use repeat(auto-fit, minmax(...))
+   inline instead, which reflows without a breakpoint. */
+
+.ev-navbar-cta {
+  display: none;
+}
+@media (min-width: 480px) {
+  .ev-navbar-cta {
+    display: inline-flex;
+  }
+}
+
+.ev-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 860px) {
+  .ev-hero-grid {
+    grid-template-columns: minmax(0, 1.55fr) minmax(240px, 0.85fr);
+  }
+}
+
+.ev-split-lead {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) {
+  .ev-split-lead {
+    grid-template-columns: minmax(0, 2fr) minmax(180px, 0.7fr);
+  }
+}
+
+.ev-split-contact {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 860px) {
+  .ev-split-contact {
+    grid-template-columns: minmax(0, 1.4fr) minmax(260px, 0.8fr);
+  }
+}
+
+.ev-exp-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--ev-space-2) var(--ev-space-5);
+}
+.ev-exp-header {
+  display: none;
+}
+.ev-exp-company {
+  display: none;
+}
+.ev-exp-mobile-meta {
+  grid-column: 1 / -1;
+}
+@media (min-width: 640px) {
+  .ev-exp-row {
+    grid-template-columns: 1.4fr 1fr auto;
+  }
+  .ev-exp-header {
+    display: grid;
+  }
+  .ev-exp-company {
+    display: block;
+  }
+  .ev-exp-mobile-meta {
+    display: none;
+  }
+}
+
+.ev-accent-heading {
+  color: var(--ev-accent);
+}
+
+.ev-case-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.ev-case-sidebar {
+  order: -1;
+}
+@media (min-width: 860px) {
+  .ev-case-grid {
+    grid-template-columns: minmax(0, 1.6fr) minmax(220px, 0.6fr);
+    align-items: start;
+  }
+  .ev-case-sidebar {
+    order: 0;
+    position: sticky;
+    top: 100px;
+  }
+}
+
+.ev-award-row {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) {
+  .ev-award-row {
+    grid-template-columns: minmax(180px, 1fr) 2fr auto;
+  }
+}

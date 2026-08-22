@@ -1,0 +1,104 @@
+<!-- @dsCard group="Portfolio website" viewport="1440x900" name="Homepage" subtitle="Click-through recreation: home, work, case study, about, contact" -->
+<!-- @startingPoint section="Portfolio website" subtitle="Full portfolio site, click-through" viewport="1440x900" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ismail Kayadelen — portfolio UI kit</title>
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  html { scroll-behavior: smooth; }
+  body { overflow-x: hidden; }
+  .ev-shell { max-width: var(--ev-page-max); margin-inline: auto; }
+</style>
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.24.7/babel.min.js"></script>
+<script src="../../_dev/ds-fallback.js"></script>
+<script src="data.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel" data-presets="react" src="tweaks-panel.jsx"></script>
+<script type="text/babel" data-presets="react">
+const DS = (() => { for (const k of Object.keys(window)) { try { const v = window[k]; if (v && typeof v === "object" && v.Button && v.WorkCard) return v; } catch (e) {} } return {}; })();
+
+/* Tweak values reach every screen through this context. */
+const TweakCtx = React.createContext({});
+const useEV = () => React.useContext(TweakCtx);
+</script>
+<script type="text/babel" data-presets="react" src="Home.jsx"></script>
+<script type="text/babel" data-presets="react" src="Work.jsx"></script>
+<script type="text/babel" data-presets="react" src="WorkDetail.jsx"></script>
+<script type="text/babel" data-presets="react" src="About.jsx"></script>
+<script type="text/babel" data-presets="react" src="Contact.jsx"></script>
+<script type="text/babel" data-presets="react">
+const { Navbar, MenuOverlay, FooterCTA } = DS;
+
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "name": "Ismail Kayadelen",
+  "tagline": "Full-stack developer based in Rotterdam",
+  "email": "hello@ismailkayadelen.com",
+  "accent": "#1F2BFF",
+  "available": true,
+  "showMarquee": true
+}/*EDITMODE-END*/;
+
+function App() {
+  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+  const [screen, setScreen] = React.useState("Homepage");
+  const [project, setProject] = React.useState("Vision Craft");
+  const [menu, setMenu] = React.useState(false);
+
+  React.useEffect(() => {
+    document.documentElement.style.setProperty("--ev-electric", t.accent);
+  }, [t.accent]);
+
+  const go = (name) => { setScreen(name); setMenu(false); window.scrollTo(0, 0); };
+  const openProject = (title) => {
+    if (title === "__index") return go("Work");
+    setProject(title); go("Work detail");
+  };
+
+  const screens = {
+    "Homepage": <Home onOpen={openProject} />,
+    "About me": <About />,
+    "Work": <Work onOpen={openProject} />,
+    "Work detail": <WorkDetail project={project} onOpen={openProject} />,
+    "Contact": <Contact />
+  };
+
+  return (
+    <TweakCtx.Provider value={t}>
+      <div className="ev-shell">
+        <Navbar name={t.name} onMenu={() => setMenu(true)} ctaHref="#contact"
+          onClick={(e) => { const a = e.target.closest("a"); if (a && a.getAttribute("href") === "#contact") { e.preventDefault(); go("Contact"); } if (a && a.getAttribute("href") === "#home") { e.preventDefault(); go("Homepage"); } }} />
+        {screens[screen]}
+        <FooterCTA email={t.email} marquee={t.showMarquee}
+          status={t.available ? "Limited work slot available" : "Fully booked until spring"} />
+        <MenuOverlay open={menu} onClose={() => setMenu(false)} name={t.name} email={t.email}
+          items={[{ label: "Homepage" }, { label: "About me" }, { label: "Work" }, { label: "Work detail" }, { label: "Contact" }]}
+          onNavigate={(it) => go(it.label)} />
+
+        <TweaksPanel>
+          <TweakSection label="Identity" />
+          <TweakText label="Name" value={t.name} onChange={(v) => setTweak("name", v)} />
+          <TweakText label="Tagline" value={t.tagline} onChange={(v) => setTweak("tagline", v)} />
+          <TweakText label="Email" value={t.email} onChange={(v) => setTweak("email", v)} />
+          <TweakSection label="Appearance" />
+          <TweakColor label="Accent" value={t.accent}
+            options={["#1F2BFF", "#FF2C00", "#FE004D", "#050505"]}
+            onChange={(v) => setTweak("accent", v)} />
+          <TweakToggle label="Marquee" value={t.showMarquee} onChange={(v) => setTweak("showMarquee", v)} />
+          <TweakSection label="Status" />
+          <TweakToggle label="Taking new work" value={t.available} onChange={(v) => setTweak("available", v)} />
+        </TweaksPanel>
+      </div>
+    </TweakCtx.Provider>
+  );
+}
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>

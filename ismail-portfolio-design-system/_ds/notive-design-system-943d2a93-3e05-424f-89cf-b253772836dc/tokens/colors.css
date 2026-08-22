@@ -1,0 +1,85 @@
+/* ============================================================
+   NOTIVE — Color tokens
+   Palette ratio (per brandguide 3.2): Primair 60% · Secundair 30% · Accent 10%
+   ============================================================ */
+:root {
+  /* ---- Brand core ---- */
+  --nova-blue:  #001C36; /* Primair — backgrounds, type, overlays, visual elements */
+  --sky-blue:   #42A2E2; /* Secundair — links, subtitles, highlights */
+  --leaf-green: #0FC50F; /* Accent — buttons / primary CTA */
+  --icy-white:  #F8F2FF; /* Soft tinted background */
+  --white:      #FFFFFF;
+
+  /* ---- Nova Blue scale (primary navy) ---- */
+  --nova-900: #00111F;
+  --nova-800: #001C36; /* = nova-blue */
+  --nova-700: #0A2A48;
+  --nova-600: #11263D; /* lighter navy used for headings on light bg */
+  --nova-500: #1C3A57;
+
+  /* ---- Sky Blue scale (secondary) ---- */
+  --sky-700: #1F6FAE;
+  --sky-600: #2A7FBC;
+  --sky-500: #42A2E2; /* = sky-blue */
+  --sky-400: #6FBCEC;
+  --sky-300: #A8D7F5;
+  --sky-100: #E4F2FC;
+
+  /* ---- Leaf Green scale (accent) ---- */
+  --leaf-700: #0A8F0A;
+  --leaf-600: #0BA80B;
+  --leaf-500: #0FC50F; /* = leaf-green */
+  --leaf-400: #4BD64B;
+  --leaf-100: #E2F9E2;
+
+  /* ---- Neutrals ---- */
+  --neutral-0:   #FFFFFF;
+  --neutral-50:  #F6F7FB;
+  --neutral-100: #F1F1F1;
+  --neutral-200: #E4E7EC;
+  --neutral-300: #CBD2DA;
+  --neutral-400: #9AA5B1;
+  --neutral-500: #6B7785;
+  --neutral-600: #4A5460;
+  --neutral-700: #323A44;
+  --neutral-900: #0D0C06; /* near-black (brandguide "Black") */
+
+  /* ---- Semantic feedback ---- */
+  --success: #0FC50F;
+  --info:    #42A2E2;
+  --warning: #FFA800;
+  --danger:  #ED220B;
+
+  /* ============================================================
+     Semantic aliases — prefer these in components
+     ============================================================ */
+  /* Surfaces */
+  --surface-page:      var(--white);
+  --surface-tinted:    var(--icy-white);
+  --surface-card:      var(--white);
+  --surface-inverse:   var(--nova-blue);   /* dark sections, footer, CTA blocks */
+  --surface-subtle:    var(--neutral-50);
+
+  /* Text */
+  --text-strong:    var(--nova-blue);      /* headings */
+  --text-body:      #15314F;               /* body copy on light */
+  --text-muted:     var(--neutral-500);
+  --text-on-dark:   var(--white);
+  --text-on-dark-muted: rgba(255,255,255,0.72);
+  --text-link:      var(--sky-600);
+
+  /* Borders */
+  --border-subtle:  var(--neutral-200);
+  --border-strong:  var(--neutral-300);
+  --border-on-dark: rgba(255,255,255,0.16);
+
+  /* Actions */
+  --action-primary:        var(--leaf-green);
+  --action-primary-hover:  var(--leaf-600);
+  --action-primary-press:  var(--leaf-700);
+  --action-primary-text:   var(--nova-blue);
+  --action-secondary:      var(--nova-blue);
+  --action-secondary-hover:var(--nova-700);
+  --action-secondary-text: var(--white);
+  --focus-ring:            var(--sky-blue);
+}

@@ -1,0 +1,41 @@
+<!-- @dsCard group="Components" viewport="700x300" name="Forms" subtitle="Underline input, textarea, inverse variant" -->
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>body{padding:22px 24px;background:var(--ev-paper)}
+.grid{display:flex;flex-wrap:wrap;gap:18px;align-items:center}
+.stack{display:flex;flex-direction:column;gap:18px}
+.cap{font-family:var(--ev-font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ev-n-400)}
+</style>
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.24.7/babel.min.js"></script>
+<script src="../../_ds_bundle.js"></script>
+<script src="../../_dev/ds-fallback.js"></script>
+</head>
+<body><div id="root"></div>
+<script type="text/babel" data-presets="react">
+const DS = (() => { for (const k of Object.keys(window)) { try { const v = window[k]; if (v && typeof v === "object" && v.Button && v.WorkCard) return v; } catch (e) {} } return {}; })();
+const { Input, Button } = DS;
+function Demo() {
+  const [v, setV] = React.useState("");
+  return (
+    <div className="stack" style={{gap:20}}>
+      <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:24}}>
+        <Input label="Name" placeholder="Jane Doe" value={v} onChange={e => setV(e.target.value)} />
+        <Input label="Email" type="email" placeholder="you@studio.com" required />
+      </div>
+      <Input label="Message" multiline rows={3} placeholder="Tell me about the project" />
+      <div className="grid" style={{justifyContent:"space-between"}}>
+        <span className="cap">Focus turns the hairline ink-black</span>
+        <Button variant="solid" arrow>Send message</Button>
+      </div>
+      <div className="ev-inverse" style={{padding:"18px 20px"}}>
+        <Input label="Email" inverse placeholder="you@studio.com" />
+      </div>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById("root")).render(<Demo />);
+</script>
+</body></html>

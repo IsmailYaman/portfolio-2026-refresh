@@ -1,0 +1,40 @@
+:root{
+  --ev-font-display: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --ev-font-text:    "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --ev-font-mono:    "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  /* Weights — display work is heavy, text work is regular/medium only */
+  --ev-w-regular: 400;
+  --ev-w-medium:  500;
+  --ev-w-semi:    600;
+  --ev-w-bold:    700;
+  --ev-w-black:   800;
+
+  /* Display: uppercase, set as tight as the line allows */
+  --ev-size-hero:     clamp(64px, 13.2vw, 220px);
+  --ev-size-display:  clamp(48px, 8vw, 120px);
+  --ev-size-h1:       clamp(40px, 5.4vw, 76px);
+  --ev-size-h2:       clamp(32px, 3.6vw, 52px);
+  --ev-size-h3:       clamp(24px, 2.2vw, 34px);
+  --ev-size-h4:       20px;
+
+  /* Text + technical */
+  --ev-size-lead:     19px;
+  --ev-size-body:     16px;
+  --ev-size-sm:       14px;
+  --ev-size-label:    12px;   /* mono, uppercase, tracked */
+  --ev-size-micro:    10px;
+
+  --ev-lh-hero:   0.84;
+  --ev-lh-tight:  0.94;
+  --ev-lh-snug:   1.16;
+  --ev-lh-body:   1.55;
+  --ev-lh-label:  1.5;
+
+  --ev-ls-hero:   -0.045em;
+  --ev-ls-display:-0.035em;
+  --ev-ls-heading:-0.02em;
+  --ev-ls-body:   -0.005em;
+  --ev-ls-label:   0.14em;   /* mono eyebrows / meta */
+  --ev-ls-mono:    0.02em;
+}

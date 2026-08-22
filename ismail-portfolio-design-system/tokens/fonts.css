@@ -1,0 +1,7 @@
+/* Ismail Design System — webfonts
+   The source site ships licensed Framer-hosted webfonts that cannot be redistributed.
+   SUBSTITUTIONS (flagged in readme.md):
+     display / text grotesque  ->  Archivo      (closest free neo-grotesque)
+     technical mono / labels   ->  JetBrains Mono
+   Swap these @import lines for local @font-face rules when the real files are available. */
+@import url("https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=JetBrains+Mono:wght@400;500;700&display=swap");

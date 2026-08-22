@@ -1,0 +1,42 @@
+/* ============================================================
+   NOTIVE — Spacing, radius, shadow, layout tokens
+   ============================================================ */
+:root {
+  /* Spacing scale (4px base) */
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+
+  /* Radii — Notive uses soft, generous rounding on cards & buttons,
+     and one large radius on hero/feature blocks (per moodboard). */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 28px;
+  --radius-2xl: 40px;
+  --radius-pill: 999px;
+
+  /* Shadows — restrained, cool-tinted (navy-based) */
+  --shadow-xs: 0 1px 2px rgba(0,28,54,0.06);
+  --shadow-sm: 0 2px 6px rgba(0,28,54,0.08);
+  --shadow-md: 0 8px 24px rgba(0,28,54,0.10);
+  --shadow-lg: 0 18px 48px rgba(0,28,54,0.16);
+  --shadow-focus: 0 0 0 3px rgba(66,162,226,0.45);
+
+  /* Layout */
+  --container-max: 1200px;
+  --container-pad: 24px;
+  --section-y: 96px;
+}

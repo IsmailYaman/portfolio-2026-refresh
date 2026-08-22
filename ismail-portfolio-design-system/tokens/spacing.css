@@ -1,0 +1,40 @@
+:root{
+  --ev-space-0:   0px;
+  --ev-space-1:   4px;
+  --ev-space-2:   8px;
+  --ev-space-3:   12px;
+  --ev-space-4:   16px;
+  --ev-space-5:   24px;
+  --ev-space-6:   32px;
+  --ev-space-7:   48px;
+  --ev-space-8:   64px;
+  --ev-space-9:   96px;
+  --ev-space-10:  144px;
+  --ev-space-11:  200px;
+
+  /* Layout */
+  --ev-page-max:      1440px;
+  --ev-content-max:   1240px;
+  --ev-measure:       62ch;
+  --ev-gutter:        clamp(20px, 4vw, 64px);
+  --ev-section-y:     clamp(72px, 10vw, 160px);
+  --ev-grid-gap:      clamp(16px, 2vw, 32px);
+  --ev-rule:          1px;
+
+  /* Radii — the system is fully square. Every token is 0 by decision; the aliases are
+     kept so existing component code keeps resolving and a radius can be reintroduced
+     in one place if that ever changes. */
+  --ev-radius-none: 0px;
+  --ev-radius-sm:   0px;
+  --ev-radius-md:   0px;
+  --ev-radius-lg:   0px;
+  --ev-radius-xl:   0px;
+  --ev-radius-pill: 0px;
+
+  /* Elevation — near-absent. Contrast and rules do the work of shadows. */
+  --ev-shadow-none: none;
+  --ev-shadow-sm:   0 1px 2px rgba(5,5,5,.06);
+  --ev-shadow-md:   0 12px 32px -12px rgba(5,5,5,.18);
+  --ev-shadow-lift: 0 24px 60px -24px rgba(5,5,5,.34);
+  --ev-focus-ring:  0 0 0 2px var(--ev-paper), 0 0 0 4px var(--ev-electric);
+}

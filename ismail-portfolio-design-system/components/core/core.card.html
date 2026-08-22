@@ -1,0 +1,48 @@
+<!-- @dsCard group="Components" viewport="700x330" name="Core" subtitle="Button, Tag, Eyebrow, Icon, StatCounter, Marquee" -->
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>body{padding:22px 24px;background:var(--ev-paper)}
+.grid{display:flex;flex-wrap:wrap;gap:18px;align-items:center}
+.stack{display:flex;flex-direction:column;gap:18px}
+.cap{font-family:var(--ev-font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ev-n-400)}
+</style>
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.24.7/babel.min.js"></script>
+<script src="../../_ds_bundle.js"></script>
+<script src="../../_dev/ds-fallback.js"></script>
+</head>
+<body><div id="root"></div>
+<script type="text/babel" data-presets="react">
+const DS = (() => { for (const k of Object.keys(window)) { try { const v = window[k]; if (v && typeof v === "object" && v.Button && v.WorkCard) return v; } catch (e) {} } return {}; })();
+const { Button, Tag, Eyebrow, Icon, StatCounter, Marquee } = DS;
+function Demo() {
+  return (
+    <div className="stack">
+      <div className="grid">
+        <Button variant="solid" arrow>View all works</Button>
+        <Button variant="outline">Contact me</Button>
+        <Button variant="ghost">Back</Button>
+        <Button variant="solid" size="sm" disabled>Disabled</Button>
+      </div>
+      <div className="grid">
+        <Tag>2022</Tag>
+        <Tag tone="strong" bracket={false}>Branding</Tag>
+        <Eyebrow>Featured works</Eyebrow>
+        <Eyebrow dot="signal">Limited work slot available</Eyebrow>
+        <span className="grid" style={{gap:10}}>
+          <Icon name="arrow-up-right" size={20} /><Icon name="menu" size={20} /><Icon name="x" size={20} /><Icon name="mail" size={20} />
+        </span>
+      </div>
+      <div className="grid" style={{gap:48}}>
+        <StatCounter value="150" suffix="+" label="Project completed" />
+        <StatCounter value="12" suffix="M" label="Revenue last year" />
+      </div>
+      <Marquee items={["Branding","Web design","UI/UX design"]} size="34px" />
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById("root")).render(<Demo />);
+</script>
+</body></html>

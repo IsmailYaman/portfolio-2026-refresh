@@ -1,0 +1,17 @@
+<!-- @dsCard group="Spacing" viewport="700x180" name="Motion" subtitle="Long expo reveals, 140ms micro-states, endless marquee" -->
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../styles.css"><style>
+body{padding:20px 24px;background:var(--ev-paper)}
+.row{display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap}
+.sw{display:flex;flex-direction:column;gap:6px}
+.chip{width:96px;height:56px;border-radius:var(--ev-radius-sm)}
+.t{font-family:var(--ev-font-mono);font-size:10px;letter-spacing:.06em;color:var(--ev-n-500);text-transform:uppercase}
+.v{font-family:var(--ev-font-mono);font-size:10px;color:var(--ev-n-400)}
+</style></head><body>
+<div style="display:grid;gap:8px">
+  <div style="display:flex;gap:16px;align-items:baseline"><span class="v" style="width:110px;color:var(--ev-ink)">fast 140ms</span><span class="t" style="width:200px">micro hover / colour</span><span class="v">var(--ev-ease-out)</span></div>
+  <div style="display:flex;gap:16px;align-items:baseline"><span class="v" style="width:110px;color:var(--ev-ink)">base 240ms</span><span class="t" style="width:200px">buttons, image scale</span><span class="v">var(--ev-ease-out)</span></div>
+  <div style="display:flex;gap:16px;align-items:baseline"><span class="v" style="width:110px;color:var(--ev-ink)">slow 520ms</span><span class="t" style="width:200px">menu overlay, cards</span><span class="v">var(--ev-ease-inout)</span></div>
+  <div style="display:flex;gap:16px;align-items:baseline"><span class="v" style="width:110px;color:var(--ev-ink)">reveal 900ms</span><span class="t" style="width:200px">scroll-in headlines</span><span class="v">var(--ev-ease-expo)</span></div>
+</div>
+</body></html>
