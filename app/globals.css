@@ -344,7 +344,11 @@ button {
 
 .ev-exp-row {
   display: grid;
-  grid-template-columns: 1fr auto;
+  /* minmax(0, Nfr) instead of bare Nfr, and a fixed year column: each row is
+     its own grid (not shared rows of one table), so any content-based track
+     sizing (the default for bare fr tracks) drifts per row and the header's
+     short labels stop lining up with the data below it. */
+  grid-template-columns: minmax(0, 1fr) 170px;
   gap: var(--ev-space-2) var(--ev-space-5);
 }
 .ev-exp-header {
@@ -358,7 +362,7 @@ button {
 }
 @media (min-width: 640px) {
   .ev-exp-row {
-    grid-template-columns: 1.4fr 1fr auto;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) 170px;
   }
   .ev-exp-header {
     display: grid;
