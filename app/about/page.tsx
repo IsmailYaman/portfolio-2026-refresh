@@ -41,7 +41,7 @@ export default function About() {
       </section>
 
       <section style={{ padding: "var(--ev-space-9) var(--ev-gutter)" }}>
-        <h2 className="ev-h4" style={{ marginBottom: "var(--ev-space-6)" }}>
+        <h2 className="ev-h3" style={{ marginBottom: "var(--ev-space-6)" }}>
           Experience
         </h2>
         <ExperienceRow header />
@@ -49,7 +49,7 @@ export default function About() {
           <ExperienceRow key={r.title + r.year} title={r.title} company={r.company} year={r.year} />
         ))}
 
-        <h2 className="ev-h4" style={{ margin: "var(--ev-space-8) 0 var(--ev-space-6)" }}>
+        <h2 className="ev-h3" style={{ margin: "var(--ev-space-8) 0 var(--ev-space-6)" }}>
           Education
         </h2>
         <ExperienceRow header companyLabel="Institution" />
