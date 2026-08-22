@@ -249,6 +249,9 @@ export const tools = [
   "Docker",
   "Vercel",
   "Shopify",
+  "Python",
+  "Kotlin",
+  "Jetpack Compose",
   "Blender",
 ];
 

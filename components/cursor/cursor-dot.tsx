@@ -14,18 +14,46 @@ function getFinePointerServerSnapshot() {
   return false;
 }
 
+const EASE = 0.16;
+const OFFSET_X = 20;
+const OFFSET_Y = 20;
+
 export function CursorDot({ label }: { label: string | null }) {
   const ref = React.useRef<HTMLDivElement>(null);
   const enabled = React.useSyncExternalStore(subscribeFinePointer, getFinePointerSnapshot, getFinePointerServerSnapshot);
 
   React.useEffect(() => {
     if (!enabled) return;
+
+    const target = { x: -100, y: -100 };
+    const pos = { ...target };
+    let frame: number;
+    let started = false;
+
     const onMove = (e: MouseEvent) => {
-      const el = ref.current;
-      if (el) el.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%)`;
+      target.x = e.clientX;
+      target.y = e.clientY;
+      if (!started) {
+        pos.x = target.x;
+        pos.y = target.y;
+        started = true;
+      }
     };
     window.addEventListener("mousemove", onMove);
-    return () => window.removeEventListener("mousemove", onMove);
+
+    const tick = () => {
+      pos.x += (target.x - pos.x) * EASE;
+      pos.y += (target.y - pos.y) * EASE;
+      const el = ref.current;
+      if (el) el.style.transform = `translate3d(${pos.x + OFFSET_X}px, ${pos.y + OFFSET_Y}px, 0) translate(-50%, -50%)`;
+      frame = requestAnimationFrame(tick);
+    };
+    frame = requestAnimationFrame(tick);
+
+    return () => {
+      window.removeEventListener("mousemove", onMove);
+      cancelAnimationFrame(frame);
+    };
   }, [enabled]);
 
   if (!enabled) return null;
