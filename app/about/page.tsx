@@ -2,9 +2,8 @@ import Image from "next/image";
 import { Eyebrow } from "@/components/core/eyebrow";
 import { Tag } from "@/components/core/tag";
 import { Marquee } from "@/components/core/marquee";
-import { StatCounter } from "@/components/core/stat-counter";
 import { ExperienceRow } from "@/components/content/experience-row";
-import { bio, projects, tools, workExperience, education } from "@/lib/data";
+import { bio, tools, workExperience, education } from "@/lib/data";
 
 export default function About() {
   return (
@@ -21,26 +20,23 @@ export default function About() {
             <Tag bracket={false}>Rotterdam, Netherlands</Tag>
           </div>
         </div>
-        <div style={{ position: "relative", width: "100%", aspectRatio: "16 / 9", marginTop: "var(--ev-space-6)" }}>
-          <Image src="/portrait.png" alt="Portrait of Ismail Kayadelen" fill sizes="100vw" style={{ objectFit: "cover", objectPosition: "center 15%" }} />
-        </div>
       </section>
 
       <section style={{ padding: "0 var(--ev-gutter) var(--ev-space-9)" }}>
-        <p className="ev-h3" style={{ maxWidth: "44ch", textTransform: "none", fontWeight: 500 }}>
-          {bio.lead}
-        </p>
-        <p style={{ marginTop: "var(--ev-space-5)", maxWidth: "52ch", color: "var(--ev-text-secondary)" }}>{bio.secondary}</p>
-      </section>
-
-      <section className="ev-inverse" style={{ padding: "var(--ev-space-9) var(--ev-gutter)" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "var(--ev-space-7)" }}>
-          <StatCounter inverse value="4" suffix="+" label="Years of experience" />
-          <StatCounter inverse value={String(projects.length)} suffix="" label="Projects shipped" />
+        <div className="ev-hero-grid" style={{ gap: "var(--ev-grid-gap)", alignItems: "start" }}>
+          <div className="ev-sticky-copy" style={{ display: "flex", flexDirection: "column", gap: "var(--ev-space-5)" }}>
+            <p className="ev-h3" style={{ margin: 0, maxWidth: "44ch", textTransform: "none", fontWeight: 500 }}>
+              {bio.lead}
+            </p>
+            <p style={{ margin: 0, maxWidth: "52ch", color: "var(--ev-text-secondary)" }}>{bio.secondary}</p>
+          </div>
+          <div style={{ position: "relative", width: "100%", aspectRatio: "4 / 5" }}>
+            <Image src="/portrait.png" alt="Portrait of Ismail Kayadelen" fill sizes="(max-width: 860px) 100vw, 34vw" style={{ objectFit: "cover" }} />
+          </div>
         </div>
       </section>
 
-      <section style={{ padding: "var(--ev-space-9) var(--ev-gutter)" }}>
+      <section style={{ padding: "var(--ev-space-9) var(--ev-gutter) 0" }}>
         <h2 className="ev-h3" style={{ marginBottom: "var(--ev-space-6)" }}>
           Experience
         </h2>

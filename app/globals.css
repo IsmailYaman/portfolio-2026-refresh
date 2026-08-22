@@ -322,6 +322,18 @@ button {
   }
 }
 
+/* Sticky only makes sense once ev-hero-grid actually splits into two columns
+   — on a single-column mobile layout there's no taller sibling to hang next to. */
+.ev-sticky-copy {
+  position: static;
+}
+@media (min-width: 860px) {
+  .ev-sticky-copy {
+    position: sticky;
+    top: 96px;
+  }
+}
+
 .ev-split-lead {
   display: grid;
   grid-template-columns: 1fr;

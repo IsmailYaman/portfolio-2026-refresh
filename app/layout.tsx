@@ -16,7 +16,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Ismail Kayadelen — Web Developer & Designer",
   description:
-    "Web developer & designer based in the Netherlands with 4+ years of experience. Specialising in React, TypeScript, Next.js and Laravel — from database design to the last CSS tweak.",
+    "Web developer & designer based in the Netherlands with 3+ years of experience. Specialising in React, TypeScript, Next.js and Laravel — from database design to the last CSS tweak.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

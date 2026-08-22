@@ -19,7 +19,7 @@ function Hero() {
   return (
     <section style={{ padding: "clamp(28px,4vw,56px) var(--ev-gutter) var(--ev-space-6)" }}>
       <div className="ev-hero-grid" style={{ gap: "var(--ev-grid-gap)", alignItems: "start" }}>
-        <div style={{ containerType: "inline-size", position: "sticky", top: "96px" }}>
+        <div className="ev-sticky-copy" style={{ containerType: "inline-size" }}>
           <h1 className="ev-hero" style={{ margin: 0, fontSize: heroSize, overflowWrap: "normal" }}>
             I&rsquo;m
             {parts.map((w, i) => (

@@ -6,7 +6,7 @@ export const SITE = {
 };
 
 export const bio = {
-  lead: "I'm a web developer based in the Netherlands with 4+ years of experience building web apps and e-com solutions.",
+  lead: "I'm a web developer based in the Netherlands with 3+ years of experience building web apps and e-com solutions.",
   secondary:
     "Outside of work I spend time in the gym and tinkering with my car. Both teach you the same thing: details matter, and shortcuts always show up later.",
 };
