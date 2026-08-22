@@ -33,19 +33,19 @@ const SIZES: Record<string, React.CSSProperties> = {
 function look(variant: string, hover: boolean, inverse: boolean): React.CSSProperties {
   if (variant === "solid")
     return inverse
-      ? { background: hover ? "var(--ev-n-100)" : "var(--ev-paper)", color: "var(--ev-ink)" }
-      : { background: hover ? "var(--ev-n-700)" : "var(--ev-ink)", color: "var(--ev-paper)" };
+      ? { background: hover ? "var(--ev-n-100)" : "var(--ev-paper)", color: "var(--ev-ink)", borderColor: "var(--ev-accent)" }
+      : { background: hover ? "var(--ev-n-700)" : "var(--ev-ink)", color: "var(--ev-paper)", borderColor: "var(--ev-accent)" };
   if (variant === "outline")
     return inverse
       ? {
-          background: hover ? "var(--ev-paper)" : "transparent",
-          color: hover ? "var(--ev-ink)" : "var(--ev-paper)",
-          borderColor: hover ? "var(--ev-paper)" : "var(--ev-border-inverse)",
+          background: hover ? "var(--ev-accent)" : "transparent",
+          color: "var(--ev-paper)",
+          borderColor: hover ? "var(--ev-accent)" : "var(--ev-border-inverse)",
         }
       : {
-          background: hover ? "var(--ev-ink)" : "transparent",
+          background: hover ? "var(--ev-accent)" : "transparent",
           color: hover ? "var(--ev-paper)" : "var(--ev-ink)",
-          borderColor: "var(--ev-ink)",
+          borderColor: hover ? "var(--ev-accent)" : "var(--ev-ink)",
         };
   return inverse
     ? { background: "transparent", color: hover ? "var(--ev-paper)" : "var(--ev-text-on-inverse-secondary)" }
