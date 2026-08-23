@@ -4,7 +4,7 @@ import { Marquee } from "../core/marquee";
 
 function Column({ title, links }: { title: string; links: { label: string; href?: string }[] }) {
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "var(--ev-space-3)" }}>
+    <div style={{ display: "flex", flexDirection: "column", rowGap: "var(--ev-space-3)" }}>
       <span
         style={{
           fontFamily: "var(--ev-font-display)",
@@ -79,7 +79,7 @@ export function FooterCTA({
             {status}
           </Eyebrow>
         </div>
-        <div style={{ display: "flex", gap: "clamp(32px, 6vw, 96px)", flexWrap: "wrap" }}>
+        <div style={{ display: "flex", rowGap: "var(--ev-space-8)", columnGap: "clamp(32px, 6vw, 96px)", flexWrap: "wrap" }}>
           {columns.map((c) => (
             <Column key={c.title} {...c} />
           ))}
