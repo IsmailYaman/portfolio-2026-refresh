@@ -9,10 +9,7 @@ import { LenisProvider } from "@/components/providers/lenis-provider";
 import { CursorProvider } from "@/components/cursor/cursor-context";
 import { SITE, socials } from "@/lib/data";
 
-const footerColumns = [
-  { title: "Social", links: socials.map((s) => ({ label: s.label, href: s.href })) },
-  { title: "Contact", links: [{ label: "Email", href: `mailto:${SITE.email}` }] },
-];
+const footerColumns = [{ title: "Social", links: socials.map((s) => ({ label: s.label, href: s.href })) }];
 
 export function SiteChrome({ children }: { children: React.ReactNode }) {
   const [menuOpen, setMenuOpen] = React.useState(false);
