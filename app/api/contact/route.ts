@@ -19,7 +19,7 @@ export async function POST(request: Request) {
 
   try {
     const { error } = await resend.emails.send({
-      from: `${SITE.name} website <onboarding@resend.dev>`,
+      from: `${SITE.name} website <noreply@ismailkayadelen.com>`,
       to: SITE.email,
       replyTo: email,
       subject: subject ? `New message: ${subject}` : `New message from ${name}`,
