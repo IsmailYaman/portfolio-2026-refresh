@@ -4,6 +4,7 @@ export const SITE = {
   email: "hello@ismailkayadelen.com",
   location: "Rotterdam, Netherlands",
   available: true,
+  url: "https://ismailkayadelen.com",
 };
 
 export const bio = {
