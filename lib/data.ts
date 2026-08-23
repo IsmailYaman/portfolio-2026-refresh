@@ -2,6 +2,7 @@ export const SITE = {
   name: "Ismail Kayadelen",
   tagline: "web developer & designer based in Rotterdam",
   email: "hello@ismailkayadelen.com",
+  location: "Rotterdam, Netherlands",
   available: true,
 };
 
@@ -196,18 +197,79 @@ export type ExperienceEntry = {
   company: string;
   type: "Work" | "Education";
   year: string;
+  description: string;
 };
 
 export const experience: ExperienceEntry[] = [
-  { title: "Full Stack Developer", company: "Notive", type: "Work", year: "May 2024 – Present" },
-  { title: "Frontend Developer", company: "Ventaro", type: "Work", year: "May 2024 – Present" },
-  { title: "Founder", company: "YAMOTION", type: "Work", year: "Nov 2024 – Present" },
-  { title: "XR Developer Intern (Thesis)", company: "360fabriek", type: "Work", year: "Sep 2023 – Feb 2024" },
-  { title: "Frontend Developer", company: "WeAreReasonablePeople", type: "Work", year: "Aug 2022 – Sep 2023" },
-  { title: "Frontend Developer Intern", company: "Notive", type: "Work", year: "Aug 2020 – Jan 2021" },
-  { title: "Bachelor of Creative Media & Game Technologies", company: "University of Applied Sciences, Rotterdam", type: "Education", year: "Sep 2018 – Feb 2023" },
-  { title: "MBO 4 — Software Engineer", company: "ROC Mondriaan, The Hague", type: "Education", year: "Sep 2015 – June 2018" },
+  {
+    title: "Full Stack Developer",
+    company: "Notive",
+    type: "Work",
+    year: "May 2024 – Present",
+    description:
+      "Returned to Notive as a frontend developer, building modern web applications and contributing to the technical direction of projects. Also working on backend projects and other technical stuff.",
+  },
+  {
+    title: "Frontend Developer",
+    company: "Ventaro",
+    type: "Work",
+    year: "May 2024 – Present",
+    description:
+      "Ventaro, a Notive sister company where the focus lies on smaller scale projects. Working on Framer and Shopify projects, and supporting existing clients with questions.",
+  },
+  {
+    title: "Founder",
+    company: "YAMOTION",
+    type: "Work",
+    year: "Nov 2024 – Present",
+    description: "Founded YAMOTION, where I focus on creating websites and webshops for my clients.",
+  },
+  {
+    title: "XR Developer Intern (Thesis)",
+    company: "360fabriek",
+    type: "Work",
+    year: "Sep 2023 – Feb 2024",
+    description:
+      "Completed my thesis internship focusing on XR development, exploring immersive technologies and their applications in the healthcare industry.",
+  },
+  {
+    title: "Frontend Developer",
+    company: "WeAreReasonablePeople",
+    type: "Work",
+    year: "Aug 2022 – Sep 2023",
+    description: "Developed user interfaces and dashboards, collaborating with design and backend teams to deliver high-quality digital products.",
+  },
+  {
+    title: "Frontend Developer Intern",
+    company: "Notive",
+    type: "Work",
+    year: "Aug 2020 – Jan 2021",
+    description: "Started my professional journey as a frontend development intern, learning industry practices and contributing to real-world projects.",
+  },
+  {
+    title: "Bachelor of Creative Media & Game Technologies",
+    company: "University of Applied Sciences, Rotterdam",
+    type: "Education",
+    year: "Sep 2018 – Feb 2023",
+    description: "Pursued a degree in Creative Media & Game Technologies with emphasis on frontend development and design.",
+  },
+  {
+    title: "MBO 4 — Software Engineer",
+    company: "ROC Mondriaan, The Hague",
+    type: "Education",
+    year: "Sep 2015 – June 2018",
+    description:
+      "Gained valuable experience in both frontend and backend development, with a strong preference for frontend work due to the immediate visual feedback and creative possibilities.",
+  },
 ];
+
+export const languages = [
+  { name: "Dutch", level: "Native" },
+  { name: "Turkish", level: "Native" },
+  { name: "English", level: "Fluent" },
+];
+
+export const hobbies = ["Gym", "Cars"];
 
 export const workExperience = experience.filter((e) => e.type === "Work");
 export const education = experience.filter((e) => e.type === "Education");

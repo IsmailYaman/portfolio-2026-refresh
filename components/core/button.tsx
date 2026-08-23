@@ -63,6 +63,7 @@ export function Button({
   disabled = false,
   arrow = false,
   onClick,
+  download,
   style,
   ...rest
 }: {
@@ -74,6 +75,7 @@ export function Button({
   disabled?: boolean;
   arrow?: boolean;
   onClick?: React.MouseEventHandler;
+  download?: boolean | string;
   style?: React.CSSProperties;
 } & Omit<React.HTMLAttributes<HTMLElement>, "onClick">) {
   const [hover, setHover] = React.useState(false);
@@ -117,14 +119,14 @@ export function Button({
 
   if (href && href.startsWith("/")) {
     return (
-      <Link href={href} aria-disabled={disabled || undefined} {...handlers}>
+      <Link href={href} download={download} aria-disabled={disabled || undefined} {...handlers}>
         {content}
       </Link>
     );
   }
   if (href) {
     return (
-      <a href={href} onClick={onClick} aria-disabled={disabled || undefined} {...handlers}>
+      <a href={href} download={download} onClick={onClick} aria-disabled={disabled || undefined} {...handlers}>
         {content}
       </a>
     );

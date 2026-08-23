@@ -14,6 +14,7 @@ export function MenuOverlay({
   items = [
     { label: "Homepage", href: "/" },
     { label: "About me", href: "/about" },
+    { label: "CV", href: "/cv" },
     { label: "Work", href: "/work" },
     { label: "Contact", href: "/contact" },
   ],

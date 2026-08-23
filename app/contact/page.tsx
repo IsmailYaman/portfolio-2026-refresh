@@ -3,7 +3,7 @@ import { ContactForm } from "@/components/forms/contact-form";
 import { SITE, socials } from "@/lib/data";
 
 const details: { label: string; value: string; href?: string }[] = [
-  { label: "Location", value: "Rotterdam, Netherlands" },
+  { label: "Location", value: SITE.location },
   { label: "Email", value: SITE.email, href: `mailto:${SITE.email}` },
   ...socials.map((s) => ({ label: s.label, value: s.href.replace(/^https?:\/\//, ""), href: s.href })),
 ];

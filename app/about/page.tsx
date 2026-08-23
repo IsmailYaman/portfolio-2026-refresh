@@ -3,7 +3,7 @@ import { Eyebrow } from "@/components/core/eyebrow";
 import { Tag } from "@/components/core/tag";
 import { Marquee } from "@/components/core/marquee";
 import { ExperienceRow } from "@/components/content/experience-row";
-import { bio, tools, workExperience, education } from "@/lib/data";
+import { SITE, bio, tools, workExperience, education } from "@/lib/data";
 
 export default function About() {
   return (
@@ -17,7 +17,7 @@ export default function About() {
             <Tag bracket={false} tone="strong">
               Web developer &amp; designer
             </Tag>
-            <Tag bracket={false}>Rotterdam, Netherlands</Tag>
+            <Tag bracket={false}>{SITE.location}</Tag>
           </div>
         </div>
       </section>
