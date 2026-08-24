@@ -93,13 +93,13 @@ function ExperienceRows({ items }: { items: ExperienceEntry[] }) {
   return (
     <>
       {items.map((item) => (
-        <View key={item.title.en + item.year} style={styles.row} wrap={false}>
+        <View key={item.title.en + item.year.en} style={styles.row} wrap={false}>
           <View style={styles.rowLeft}>
             <Text style={styles.rowTitle}>{item.title.en}</Text>
             <Text style={styles.rowCompany}>{item.company}</Text>
             <Text style={styles.rowDescription}>{item.description.en}</Text>
           </View>
-          <Text style={styles.rowYear}>{item.year}</Text>
+          <Text style={styles.rowYear}>{item.year.en}</Text>
         </View>
       ))}
     </>

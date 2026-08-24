@@ -46,7 +46,7 @@ export default async function About() {
         </h2>
         <ExperienceRow header titleLabel={d.home.title} companyLabel={d.home.company} yearLabel={d.work.year} />
         {workExperience.map((r) => (
-          <ExperienceRow key={r.title.en + r.year} title={r.title[locale]} company={r.company} year={r.year} />
+          <ExperienceRow key={r.title.en + r.year.en} title={r.title[locale]} company={r.company} year={r.year[locale]} />
         ))}
 
         <h2 className="ev-h3" style={{ margin: "var(--ev-space-8) 0 var(--ev-space-6)" }}>
@@ -54,7 +54,7 @@ export default async function About() {
         </h2>
         <ExperienceRow header titleLabel={d.home.title} companyLabel={d.home.institution} yearLabel={d.work.year} />
         {education.map((r) => (
-          <ExperienceRow key={r.title.en + r.year} title={r.title[locale]} company={r.company} year={r.year} />
+          <ExperienceRow key={r.title.en + r.year.en} title={r.title[locale]} company={r.company} year={r.year[locale]} />
         ))}
       </section>
 

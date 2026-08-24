@@ -293,7 +293,7 @@ export type ExperienceEntry = {
   title: L;
   company: string;
   type: "Work" | "Education";
-  year: string;
+  year: L;
   description: L;
 };
 
@@ -302,7 +302,7 @@ export const experience: ExperienceEntry[] = [
     title: { en: "Full Stack Developer", nl: "Full Stack Developer" },
     company: "Notive",
     type: "Work",
-    year: "May 2024 – Present",
+    year: { en: "May 2024 – Present", nl: "Mei 2024 – Heden" },
     description: {
       en: "Returned to Notive as a frontend developer, building modern web applications and contributing to the technical direction of projects. Also working on backend projects and other technical stuff.",
       nl: "Teruggekeerd bij Notive als frontend developer, waar ik moderne webapplicaties bouw en meedenk over de technische richting van projecten. Daarnaast werk ik aan backend-projecten en andere technische zaken.",
@@ -312,7 +312,7 @@ export const experience: ExperienceEntry[] = [
     title: { en: "Frontend Developer", nl: "Frontend Developer" },
     company: "Ventaro",
     type: "Work",
-    year: "May 2024 – Present",
+    year: { en: "May 2024 – Present", nl: "Mei 2024 – Heden" },
     description: {
       en: "Ventaro, a Notive sister company where the focus lies on smaller scale projects. Working on Framer and Shopify projects, and supporting existing clients with questions.",
       nl: "Ventaro, een zusterbedrijf van Notive gericht op kleinschaligere projecten. Ik werk aan Framer- en Shopify-projecten en ondersteun bestaande klanten met vragen.",
@@ -322,7 +322,7 @@ export const experience: ExperienceEntry[] = [
     title: { en: "Founder", nl: "Oprichter" },
     company: "YAMOTION",
     type: "Work",
-    year: "Nov 2024 – Present",
+    year: { en: "Nov 2024 – Present", nl: "Nov 2024 – Heden" },
     description: {
       en: "Founded YAMOTION, where I focus on creating websites and webshops for my clients.",
       nl: "YAMOTION opgericht, waar ik me richt op het bouwen van websites en webshops voor klanten.",
@@ -332,7 +332,7 @@ export const experience: ExperienceEntry[] = [
     title: { en: "XR Developer Intern (Thesis)", nl: "XR Developer Stagiair (Afstuderen)" },
     company: "360fabriek",
     type: "Work",
-    year: "Sep 2023 – Feb 2024",
+    year: { en: "Sep 2023 – Feb 2024", nl: "Sep 2023 – Feb 2024" },
     description: {
       en: "Completed my thesis internship focusing on XR development, exploring immersive technologies and their applications in the healthcare industry.",
       nl: "Afstudeerstage gericht op XR-development, waarbij ik immersieve technologieën en hun toepassingen binnen de zorgsector heb onderzocht.",
@@ -342,7 +342,7 @@ export const experience: ExperienceEntry[] = [
     title: { en: "Frontend Developer", nl: "Frontend Developer" },
     company: "WeAreReasonablePeople",
     type: "Work",
-    year: "Aug 2022 – Sep 2023",
+    year: { en: "Aug 2022 – Sep 2023", nl: "Aug 2022 – Sep 2023" },
     description: {
       en: "Developed user interfaces and dashboards, collaborating with design and backend teams to deliver high-quality digital products.",
       nl: "Interfaces en dashboards ontwikkeld, in samenwerking met design- en backendteams om hoogwaardige digitale producten op te leveren.",
@@ -352,7 +352,7 @@ export const experience: ExperienceEntry[] = [
     title: { en: "Frontend Developer Intern", nl: "Frontend Developer Stagiair" },
     company: "Notive",
     type: "Work",
-    year: "Aug 2020 – Jan 2021",
+    year: { en: "Aug 2020 – Jan 2021", nl: "Aug 2020 – Jan 2021" },
     description: {
       en: "Started my professional journey as a frontend development intern, learning industry practices and contributing to real-world projects.",
       nl: "Startte mijn professionele carrière als frontend development stagiair, waar ik de praktijk leerde kennen en meewerkte aan echte projecten.",
@@ -362,7 +362,7 @@ export const experience: ExperienceEntry[] = [
     title: { en: "Bachelor of Creative Media & Game Technologies", nl: "Bachelor Creative Media & Game Technologies" },
     company: "University of Applied Sciences, Rotterdam",
     type: "Education",
-    year: "Sep 2018 – Feb 2023",
+    year: { en: "Sep 2018 – Feb 2023", nl: "Sep 2018 – Feb 2023" },
     description: {
       en: "Pursued a degree in Creative Media & Game Technologies with emphasis on frontend development and design.",
       nl: "Een opleiding Creative Media & Game Technologies gevolgd met de nadruk op frontend development en design.",
@@ -372,7 +372,7 @@ export const experience: ExperienceEntry[] = [
     title: { en: "MBO 4 — Software Engineer", nl: "MBO 4 — Software Engineer" },
     company: "ROC Mondriaan, The Hague",
     type: "Education",
-    year: "Sep 2015 – June 2018",
+    year: { en: "Sep 2015 – June 2018", nl: "Sep 2015 – Jun 2018" },
     description: {
       en: "Gained valuable experience in both frontend and backend development, with a strong preference for frontend work due to the immediate visual feedback and creative possibilities.",
       nl: "Waardevolle ervaring opgedaan in zowel frontend als backend development, met een sterke voorkeur voor frontend werk vanwege de directe visuele feedback en creatieve mogelijkheden.",
