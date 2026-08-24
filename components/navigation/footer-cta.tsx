@@ -1,5 +1,4 @@
 import React from "react";
-import { Eyebrow } from "../core/eyebrow";
 import { Marquee } from "../core/marquee";
 
 function Column({ title, links }: { title: string; links: { label: string; href?: string }[] }) {
@@ -37,7 +36,6 @@ function Column({ title, links }: { title: string; links: { label: string; href?
 
 export function FooterCTA({
   headline = "Let's chat",
-  status = "Limited work slot available",
   email = "hello@ismailkayadelen.com",
   columns = [
     { title: "Social", links: [{ label: "Instagram" }, { label: "GitHub" }, { label: "LinkedIn" }] },
@@ -51,7 +49,6 @@ export function FooterCTA({
   ...rest
 }: {
   headline?: string;
-  status?: string;
   email?: string;
   columns?: { title: string; links: { label: string; href?: string }[] }[];
   credit?: string;
@@ -77,9 +74,6 @@ export function FooterCTA({
           >
             {headline}
           </a>
-          <Eyebrow dot="signal" inverse>
-            {status}
-          </Eyebrow>
         </div>
         <div style={{ display: "flex", rowGap: "var(--ev-space-8)", columnGap: "clamp(32px, 6vw, 96px)", flexWrap: "wrap" }}>
           {columns.map((c) => (

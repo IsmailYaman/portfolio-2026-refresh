@@ -46,7 +46,6 @@ export function SiteChrome({ children, locale }: { children: React.ReactNode; lo
           <FooterCTA
             email={SITE.email}
             headline={d.footer.headline}
-            status={SITE.available ? d.footer.availableStatus : d.footer.bookedStatus}
             columns={footerColumns}
             credit={`© 2026 ${SITE.name}`}
             marqueeText={d.footer.marquee}
