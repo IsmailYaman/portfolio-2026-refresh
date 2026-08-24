@@ -1,16 +1,38 @@
 /**
- * Generates public/cv.pdf from the same data the /cv page renders, so the
- * downloadable file and the on-site CV never drift apart.
+ * Generates public/cv.pdf (EN) and public/cv-nl.pdf (NL) from the same data
+ * the /cv page renders, so the downloadable files and the on-site CV never
+ * drift apart.
  *
  * Run with: npm run generate:cv
  */
 import { renderToFile, Document, Page, Text, View, StyleSheet } from "@react-pdf/renderer";
 import { SITE, bio, workExperience, education, tools, socials, languages, hobbies, type ExperienceEntry } from "../lib/data";
+import type { Locale } from "../lib/locale";
 
 const INK = "#050505";
 const SECONDARY = "#6E6E6B";
 const HAIRLINE = "#DCDCDA";
 const ACCENT = "#FF6B00";
+
+const LABELS: Record<Locale, { profile: string; experience: string; education: string; languages: string; hobbies: string; tools: string }> = {
+  en: { profile: "Profile", experience: "Experience", education: "Education", languages: "Languages", hobbies: "Hobbies", tools: "Tools" },
+  nl: { profile: "Profiel", experience: "Ervaring", education: "Opleiding", languages: "Talen", hobbies: "Hobby's", tools: "Tools" },
+};
+
+const LANGUAGE_NAME: Record<Locale, Record<string, string>> = {
+  en: { Dutch: "Dutch", Turkish: "Turkish", English: "English" },
+  nl: { Dutch: "Nederlands", Turkish: "Turks", English: "Engels" },
+};
+
+const LANGUAGE_LEVEL: Record<Locale, Record<string, string>> = {
+  en: { Native: "Native", Fluent: "Fluent" },
+  nl: { Native: "Moedertaal", Fluent: "Vloeiend" },
+};
+
+const HOBBY: Record<Locale, Record<string, string>> = {
+  en: { Gym: "Gym", Cars: "Cars" },
+  nl: { Gym: "Sporten", Cars: "Auto's" },
+};
 
 const styles = StyleSheet.create({
   page: {
@@ -89,32 +111,33 @@ const styles = StyleSheet.create({
   },
 });
 
-function ExperienceRows({ items }: { items: ExperienceEntry[] }) {
+function ExperienceRows({ items, locale }: { items: ExperienceEntry[]; locale: Locale }) {
   return (
     <>
       {items.map((item) => (
         <View key={item.title.en + item.year.en} style={styles.row} wrap={false}>
           <View style={styles.rowLeft}>
-            <Text style={styles.rowTitle}>{item.title.en}</Text>
+            <Text style={styles.rowTitle}>{item.title[locale]}</Text>
             <Text style={styles.rowCompany}>{item.company}</Text>
-            <Text style={styles.rowDescription}>{item.description.en}</Text>
+            <Text style={styles.rowDescription}>{item.description[locale]}</Text>
           </View>
-          <Text style={styles.rowYear}>{item.year.en}</Text>
+          <Text style={styles.rowYear}>{item.year[locale]}</Text>
         </View>
       ))}
     </>
   );
 }
 
-function CvDocument() {
+function CvDocument({ locale }: { locale: Locale }) {
+  const l = LABELS[locale];
   return (
     <Document title={`${SITE.name} — CV`} author={SITE.name}>
       <Page size="A4" style={styles.page}>
         <Text style={styles.name}>{SITE.name}</Text>
-        <Text style={styles.tagline}>{SITE.tagline.en}</Text>
+        <Text style={styles.tagline}>{SITE.tagline[locale]}</Text>
 
         <View style={styles.contactRow}>
-          <Text style={styles.contactItem}>{SITE.location.en}</Text>
+          <Text style={styles.contactItem}>{SITE.location[locale]}</Text>
           <Text style={styles.contactItem}>{SITE.email}</Text>
           {socials.map((s) => (
             <Text key={s.label} style={styles.contactItem}>
@@ -124,37 +147,37 @@ function CvDocument() {
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Profile</Text>
-          <Text style={styles.paragraph}>{bio.lead.en}</Text>
+          <Text style={styles.sectionTitle}>{l.profile}</Text>
+          <Text style={styles.paragraph}>{bio.lead[locale]}</Text>
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Experience</Text>
-          <ExperienceRows items={workExperience} />
+          <Text style={styles.sectionTitle}>{l.experience}</Text>
+          <ExperienceRows items={workExperience} locale={locale} />
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Education</Text>
-          <ExperienceRows items={education} />
+          <Text style={styles.sectionTitle}>{l.education}</Text>
+          <ExperienceRows items={education} locale={locale} />
         </View>
 
         <View style={styles.footerRow}>
           <View style={styles.footerCol}>
-            <Text style={styles.sectionTitle}>Languages</Text>
+            <Text style={styles.sectionTitle}>{l.languages}</Text>
             <View style={styles.tagWrap}>
-              {languages.map((l) => (
-                <Text key={l.name} style={styles.tag}>
-                  {l.name} — {l.level}
+              {languages.map((lang) => (
+                <Text key={lang.name} style={styles.tag}>
+                  {LANGUAGE_NAME[locale][lang.name]} — {LANGUAGE_LEVEL[locale][lang.level]}
                 </Text>
               ))}
             </View>
           </View>
           <View style={styles.footerCol}>
-            <Text style={styles.sectionTitle}>Hobbies</Text>
+            <Text style={styles.sectionTitle}>{l.hobbies}</Text>
             <View style={styles.tagWrap}>
               {hobbies.map((h) => (
                 <Text key={h} style={styles.tag}>
-                  {h}
+                  {HOBBY[locale][h]}
                 </Text>
               ))}
             </View>
@@ -162,11 +185,11 @@ function CvDocument() {
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Tools</Text>
+          <Text style={styles.sectionTitle}>{l.tools}</Text>
           <View style={styles.tagWrap}>
-            {tools.map((t) => (
-              <Text key={t} style={styles.tag}>
-                {t}
+            {tools.map((tool) => (
+              <Text key={tool} style={styles.tag}>
+                {tool}
               </Text>
             ))}
           </View>
@@ -177,8 +200,10 @@ function CvDocument() {
 }
 
 async function main() {
-  await renderToFile(<CvDocument />, "public/cv.pdf");
+  await renderToFile(<CvDocument locale="en" />, "public/cv.pdf");
   console.log("Generated public/cv.pdf");
+  await renderToFile(<CvDocument locale="nl" />, "public/cv-nl.pdf");
+  console.log("Generated public/cv-nl.pdf");
 }
 
 main();

@@ -11,6 +11,8 @@ export const metadata = {
 export default async function Cv() {
   const locale = await getLocale();
   const d = t(locale).cv;
+  const pdfHref = locale === "nl" ? "/cv-nl.pdf" : "/cv.pdf";
+  const imageSrc = locale === "nl" ? "/cv-nl.png" : "/cv.png";
   return (
     <main>
       <section style={{ padding: "clamp(28px,4vw,56px) var(--ev-gutter) var(--ev-space-6)" }}>
@@ -18,7 +20,7 @@ export default async function Cv() {
           <h1 className="ev-display" style={{ margin: 0 }}>
             {d.title}
           </h1>
-          <Button variant="solid" size="lg" arrow href="/cv.pdf" download>
+          <Button variant="solid" size="lg" arrow href={pdfHref} download>
             {d.download}
           </Button>
         </div>
@@ -26,7 +28,7 @@ export default async function Cv() {
 
       <section style={{ padding: "0 var(--ev-gutter) var(--ev-space-9)" }}>
         <div style={{ position: "relative", width: "100%", maxWidth: "900px", margin: "0 auto", aspectRatio: "1131 / 1600", border: "1px solid var(--ev-border-hairline)" }}>
-          <Image src="/cv.png" alt={`${SITE.name} — CV`} fill sizes="(max-width: 900px) 100vw, 900px" style={{ objectFit: "contain" }} priority />
+          <Image src={imageSrc} alt={`${SITE.name} — CV`} fill sizes="(max-width: 900px) 100vw, 900px" style={{ objectFit: "contain" }} priority />
         </div>
       </section>
     </main>

@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "generate:cv": "esbuild scripts/generate-cv.tsx --bundle --platform=node --format=esm --jsx=automatic --external:@react-pdf/renderer --external:react --outfile=scripts/.generate-cv.build.mjs && node scripts/.generate-cv.build.mjs && rm scripts/.generate-cv.build.mjs && qlmanage -t -s 1600 -o public public/cv.pdf >/dev/null && mv public/cv.pdf.png public/cv.png"
+    "generate:cv": "esbuild scripts/generate-cv.tsx --bundle --platform=node --format=esm --jsx=automatic --external:@react-pdf/renderer --external:react --outfile=scripts/.generate-cv.build.mjs && node scripts/.generate-cv.build.mjs && rm scripts/.generate-cv.build.mjs && qlmanage -t -s 1600 -o public public/cv.pdf public/cv-nl.pdf >/dev/null && mv public/cv.pdf.png public/cv.png && mv public/cv-nl.pdf.png public/cv-nl.png"
   },
   "dependencies": {
     "@react-pdf/renderer": "^4.7.0",
