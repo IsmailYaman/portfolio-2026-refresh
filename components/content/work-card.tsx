@@ -14,6 +14,7 @@ export function WorkCard({
   href = "#",
   ratio = "16 / 10",
   size = "lg",
+  viewLabel = "View",
   style,
   ...rest
 }: {
@@ -24,6 +25,7 @@ export function WorkCard({
   href?: string;
   ratio?: string;
   size?: "sm" | "lg";
+  viewLabel?: string;
   style?: React.CSSProperties;
 } & React.HTMLAttributes<HTMLAnchorElement>) {
   const [hover, setHover] = React.useState(false);
@@ -34,7 +36,7 @@ export function WorkCard({
       href={href}
       onMouseEnter={() => {
         setHover(true);
-        setCursorLabel("View");
+        setCursorLabel(viewLabel);
       }}
       onMouseLeave={() => {
         setHover(false);

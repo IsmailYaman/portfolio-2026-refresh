@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Archivo, JetBrains_Mono } from "next/font/google";
 import { SiteChrome } from "@/components/navigation/site-chrome";
 import { SITE } from "@/lib/data";
+import { t } from "@/lib/dictionary";
+import { getLocale } from "@/lib/get-locale";
 import "./globals.css";
 
 const archivo = Archivo({
@@ -14,33 +16,34 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
 });
 
-const title = "Ismail Kayadelen — Web Developer & Designer";
-const description =
-  "Web developer & designer based in the Netherlands with 3+ years of experience. Specialising in React, TypeScript, Next.js and Laravel — from database design to the last CSS tweak.";
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const d = t(locale);
+  return {
+    metadataBase: new URL(SITE.url),
+    title: d.meta.title,
+    description: d.meta.description,
+    openGraph: {
+      title: d.meta.title,
+      description: d.meta.description,
+      url: SITE.url,
+      siteName: SITE.name,
+      type: "website",
+    },
+    twitter: {
+      card: "summary",
+      title: d.meta.title,
+      description: d.meta.description,
+    },
+  };
+}
 
-export const metadata: Metadata = {
-  metadataBase: new URL(SITE.url),
-  title,
-  description,
-  openGraph: {
-    title,
-    description,
-    url: SITE.url,
-    siteName: SITE.name,
-    type: "website",
-  },
-  twitter: {
-    card: "summary",
-    title,
-    description,
-  },
-};
-
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default async function RootLayout({ children }: LayoutProps<"/">) {
+  const locale = await getLocale();
   return (
-    <html lang="en" className={`${archivo.variable} ${jetbrainsMono.variable}`}>
+    <html lang={locale} className={`${archivo.variable} ${jetbrainsMono.variable}`}>
       <body>
-        <SiteChrome>{children}</SiteChrome>
+        <SiteChrome locale={locale}>{children}</SiteChrome>
       </body>
     </html>
   );

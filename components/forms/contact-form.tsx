@@ -4,8 +4,11 @@ import React from "react";
 import { Input } from "./input";
 import { Button } from "../core/button";
 import { Eyebrow } from "../core/eyebrow";
+import { t } from "@/lib/dictionary";
+import type { Locale } from "@/lib/locale";
 
-export function ContactForm() {
+export function ContactForm({ locale }: { locale: Locale }) {
+  const d = t(locale).form;
   const [status, setStatus] = React.useState<"idle" | "sending" | "sent" | "error">("idle");
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -38,19 +41,19 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "var(--ev-space-6)" }}>
-      <h2 className="ev-h4">Get in touch</h2>
+      <h2 className="ev-h4">{d.getInTouch}</h2>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "var(--ev-space-6)" }}>
-        <Input label="Name" placeholder="Jane Doe" required name="name" />
-        <Input label="Email" type="email" placeholder="you@studio.com" required name="email" />
+        <Input label={d.name} placeholder={d.namePlaceholder} required name="name" />
+        <Input label={d.email} type="email" placeholder={d.emailPlaceholder} required name="email" />
       </div>
-      <Input label="Subject" placeholder="Brand identity for a new studio" name="subject" />
-      <Input label="Message" multiline rows={5} placeholder="Tell me about the project" name="message" />
+      <Input label={d.subject} placeholder={d.subjectPlaceholder} name="subject" />
+      <Input label={d.message} multiline rows={5} placeholder={d.messagePlaceholder} name="message" />
       <div style={{ display: "flex", alignItems: "center", gap: "var(--ev-space-5)" }}>
         <Button variant="solid" size="lg" arrow disabled={status === "sending"}>
-          {status === "sending" ? "Sending…" : status === "sent" ? "Message sent" : "Send message"}
+          {status === "sending" ? d.sending : status === "sent" ? d.sent : d.send}
         </Button>
-        {status === "sent" && <Eyebrow dot="signal">Thanks — I&rsquo;ll reply within two days</Eyebrow>}
-        {status === "error" && <Eyebrow dot="ink">Something went wrong — please try again</Eyebrow>}
+        {status === "sent" && <Eyebrow dot="signal">{d.sentNote}</Eyebrow>}
+        {status === "error" && <Eyebrow dot="ink">{d.errorNote}</Eyebrow>}
       </div>
     </form>
   );

@@ -6,8 +6,12 @@ import { WorkCard } from "@/components/content/work-card";
 import { ExperienceRow } from "@/components/content/experience-row";
 import { Tag } from "@/components/core/tag";
 import { SITE, projects, tools, workExperience, education } from "@/lib/data";
+import { t } from "@/lib/dictionary";
+import { getLocale } from "@/lib/get-locale";
+import type { Locale } from "@/lib/locale";
 
-function Hero() {
+function Hero({ locale }: { locale: Locale }) {
+  const d = t(locale);
   const parts = SITE.name.trim().split(/\s+/).filter(Boolean);
   /* The hero must fit the longest word: heavy uppercase caps run ~0.62em wide,
      the column is ~0.62 of the page. */
@@ -32,15 +36,7 @@ function Hero() {
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: "var(--ev-space-5)", paddingTop: "10px" }}>
           <p className="ev-label" style={{ margin: 0, maxWidth: "34ch" }}>
-            Hi, I&rsquo;m currently working at{" "}
-            <a href="https://notive.nl" style={{ color: "var(--ev-text-primary)", textDecoration: "underline", textUnderlineOffset: "3px" }}>
-              Notive
-            </a>{" "}
-            as a fullstack developer and freelancer at{" "}
-            <a href="https://yamotion.com" style={{ color: "var(--ev-text-primary)", textDecoration: "underline", textUnderlineOffset: "3px" }}>
-              YAMOTION
-            </a>
-            .
+            {d.home.heroIntro}
           </p>
           <div style={{ position: "relative", width: "100%", aspectRatio: "4 / 5" }}>
             <Image src="/portrait.png" alt="Portrait of Ismail Kayadelen" fill sizes="(max-width: 768px) 100vw, 34vw" style={{ objectFit: "cover" }} priority />
@@ -57,52 +53,54 @@ function Hero() {
           borderTop: "1px solid var(--ev-border-hairline)",
         }}
       >
-        <Eyebrow>Scroll to explore</Eyebrow>
+        <Eyebrow>{d.home.scrollToExplore}</Eyebrow>
         <Eyebrow align="right" dot="none">
-          Featured works
+          {d.home.featuredWorks}
         </Eyebrow>
       </div>
     </section>
   );
 }
 
-function Featured() {
+function Featured({ locale }: { locale: Locale }) {
+  const d = t(locale);
   return (
     <section style={{ padding: "var(--ev-space-8) var(--ev-gutter)" }}>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "var(--ev-grid-gap)" }}>
         {projects.slice(0, 2).map((it) => (
-          <WorkCard key={it.title} title={it.title} category={it.type} year={it.year} image={it.image} ratio={it.ratio} href={`/work/${it.slug}`} />
+          <WorkCard key={it.title} title={it.title} category={it.type} year={it.year} image={it.image} ratio={it.ratio} href={`/work/${it.slug}`} viewLabel={d.work.viewLabel} />
         ))}
       </div>
       <div style={{ display: "flex", justifyContent: "center", marginTop: "var(--ev-space-8)" }}>
         <Button variant="outline" size="lg" arrow href="/work">
-          View all works
+          {d.home.viewAllWorks}
         </Button>
       </div>
     </section>
   );
 }
 
-function Services() {
+function Services({ locale }: { locale: Locale }) {
+  const d = t(locale);
   return (
     <section className="ev-inverse" style={{ padding: "var(--ev-space-9) 0", overflow: "hidden" }}>
       <div style={{ padding: "0 var(--ev-gutter) var(--ev-space-7)" }}>
         <Eyebrow inverse dot="paper">
-          What I do
+          {d.home.whatIDo}
         </Eyebrow>
         <p className="ev-h2" style={{ marginTop: "var(--ev-space-4)", maxWidth: "22ch" }}>
-          Hi, I am {SITE.name} — {SITE.tagline}
+          {d.home.hiIAm} {SITE.name} — {SITE.tagline[locale]}
         </p>
       </div>
       <Marquee items={tools.slice(0, 4)} inverse size="clamp(40px,7vw,96px)" speed={30} />
       <div style={{ padding: "var(--ev-space-7) var(--ev-gutter) 0" }}>
         <Eyebrow inverse dot="none">
-          Other tools
+          {d.home.otherTools}
         </Eyebrow>
         <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--ev-space-3)", marginTop: "var(--ev-space-4)" }}>
-          {tools.map((t) => (
-            <Tag key={t} bracket={false} tone="inverse">
-              {t}
+          {tools.map((tool) => (
+            <Tag key={tool} bracket={false} tone="inverse">
+              {tool}
             </Tag>
           ))}
         </div>
@@ -111,35 +109,37 @@ function Services() {
   );
 }
 
-function Experience() {
+function Experience({ locale }: { locale: Locale }) {
+  const d = t(locale);
   return (
     <section style={{ padding: "var(--ev-space-9) var(--ev-gutter)" }}>
       <h2 className="ev-h3" style={{ marginBottom: "var(--ev-space-6)" }}>
-        Experience
+        {d.home.experience}
       </h2>
-      <ExperienceRow header />
+      <ExperienceRow header titleLabel={d.home.title} companyLabel={d.home.company} yearLabel={d.work.year} />
       {workExperience.map((r) => (
-        <ExperienceRow key={r.title + r.year} title={r.title} company={r.company} year={r.year} />
+        <ExperienceRow key={r.title.en + r.year} title={r.title[locale]} company={r.company} year={r.year} />
       ))}
 
       <h2 className="ev-h3" style={{ margin: "var(--ev-space-8) 0 var(--ev-space-6)" }}>
-        Education
+        {d.home.education}
       </h2>
-      <ExperienceRow header companyLabel="Institution" />
+      <ExperienceRow header titleLabel={d.home.title} companyLabel={d.home.institution} yearLabel={d.work.year} />
       {education.map((r) => (
-        <ExperienceRow key={r.title + r.year} title={r.title} company={r.company} year={r.year} />
+        <ExperienceRow key={r.title.en + r.year} title={r.title[locale]} company={r.company} year={r.year} />
       ))}
     </section>
   );
 }
 
-export default function Home() {
+export default async function Home() {
+  const locale = await getLocale();
   return (
     <main>
-      <Hero />
-      <Featured />
-      <Services />
-      <Experience />
+      <Hero locale={locale} />
+      <Featured locale={locale} />
+      <Services locale={locale} />
+      <Experience locale={locale} />
     </main>
   );
 }

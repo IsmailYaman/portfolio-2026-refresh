@@ -5,34 +5,62 @@ import { useRouter } from "next/navigation";
 import { Navbar } from "./navbar";
 import { MenuOverlay, type MenuItem } from "./menu-overlay";
 import { FooterCTA } from "./footer-cta";
+import { LanguageToggle } from "./language-toggle";
 import { LenisProvider } from "@/components/providers/lenis-provider";
 import { CursorProvider } from "@/components/cursor/cursor-context";
 import { SITE, socials } from "@/lib/data";
+import { t } from "@/lib/dictionary";
+import type { Locale } from "@/lib/locale";
 
-const footerColumns = [{ title: "Social", links: socials.map((s) => ({ label: s.label, href: s.href })) }];
-
-export function SiteChrome({ children }: { children: React.ReactNode }) {
+export function SiteChrome({ children, locale }: { children: React.ReactNode; locale: Locale }) {
   const [menuOpen, setMenuOpen] = React.useState(false);
   const router = useRouter();
+  const d = t(locale);
 
   const navigate = (item: MenuItem) => {
     setMenuOpen(false);
     router.push(item.href);
   };
 
+  const items: MenuItem[] = [
+    { label: d.nav.homepage, href: "/" },
+    { label: d.nav.about, href: "/about" },
+    { label: d.nav.cv, href: "/cv" },
+    { label: d.nav.work, href: "/work" },
+    { label: d.nav.contact, href: "/contact" },
+  ];
+  const footerColumns = [{ title: d.footer.social, links: socials.map((s) => ({ label: s.label, href: s.href })) }];
+
   return (
     <LenisProvider>
       <CursorProvider>
         <div className="ev-shell">
-          <Navbar name={SITE.name} onMenu={() => setMenuOpen(true)} />
+          <Navbar
+            name={SITE.name}
+            ctaLabel={d.nav.contactMe}
+            menuLabel={d.nav.openMenu}
+            onMenu={() => setMenuOpen(true)}
+            toggle={<LanguageToggle locale={locale} />}
+          />
           {children}
           <FooterCTA
             email={SITE.email}
-            status={SITE.available ? "Limited work slot available" : "Fully booked until spring"}
+            headline={d.footer.headline}
+            status={SITE.available ? d.footer.availableStatus : d.footer.bookedStatus}
             columns={footerColumns}
             credit={`© 2026 ${SITE.name}`}
+            marqueeText={d.footer.marquee}
           />
-          <MenuOverlay open={menuOpen} onClose={() => setMenuOpen(false)} name={SITE.name} email={SITE.email} socials={socials} onNavigate={navigate} />
+          <MenuOverlay
+            open={menuOpen}
+            onClose={() => setMenuOpen(false)}
+            name={SITE.name}
+            email={SITE.email}
+            socials={socials}
+            items={items}
+            closeLabel={d.nav.closeMenu}
+            onNavigate={navigate}
+          />
         </div>
       </CursorProvider>
     </LenisProvider>

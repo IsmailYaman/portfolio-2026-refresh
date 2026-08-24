@@ -24,6 +24,7 @@ export function MenuOverlay({
     { label: "Instagram", href: "#" },
   ],
   email = "hello@ismailkayadelen.com",
+  closeLabel = "Close menu",
   onNavigate,
   style,
   ...rest
@@ -34,6 +35,7 @@ export function MenuOverlay({
   items?: MenuItem[];
   socials?: { label: string; href: string }[];
   email?: string;
+  closeLabel?: string;
   onNavigate?: (item: MenuItem, index: number) => void;
   style?: React.CSSProperties;
 } & React.HTMLAttributes<HTMLDivElement>) {
@@ -65,7 +67,7 @@ export function MenuOverlay({
         <Logo inverse name={name} />
         <button
           onClick={onClose}
-          aria-label="Close menu"
+          aria-label={closeLabel}
           style={{
             width: "42px",
             height: "42px",

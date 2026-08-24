@@ -93,11 +93,11 @@ function ExperienceRows({ items }: { items: ExperienceEntry[] }) {
   return (
     <>
       {items.map((item) => (
-        <View key={item.title + item.year} style={styles.row} wrap={false}>
+        <View key={item.title.en + item.year} style={styles.row} wrap={false}>
           <View style={styles.rowLeft}>
-            <Text style={styles.rowTitle}>{item.title}</Text>
+            <Text style={styles.rowTitle}>{item.title.en}</Text>
             <Text style={styles.rowCompany}>{item.company}</Text>
-            <Text style={styles.rowDescription}>{item.description}</Text>
+            <Text style={styles.rowDescription}>{item.description.en}</Text>
           </View>
           <Text style={styles.rowYear}>{item.year}</Text>
         </View>
@@ -111,10 +111,10 @@ function CvDocument() {
     <Document title={`${SITE.name} — CV`} author={SITE.name}>
       <Page size="A4" style={styles.page}>
         <Text style={styles.name}>{SITE.name}</Text>
-        <Text style={styles.tagline}>{SITE.tagline}</Text>
+        <Text style={styles.tagline}>{SITE.tagline.en}</Text>
 
         <View style={styles.contactRow}>
-          <Text style={styles.contactItem}>{SITE.location}</Text>
+          <Text style={styles.contactItem}>{SITE.location.en}</Text>
           <Text style={styles.contactItem}>{SITE.email}</Text>
           {socials.map((s) => (
             <Text key={s.label} style={styles.contactItem}>
@@ -125,7 +125,7 @@ function CvDocument() {
 
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Profile</Text>
-          <Text style={styles.paragraph}>{bio.lead}</Text>
+          <Text style={styles.paragraph}>{bio.lead.en}</Text>
         </View>
 
         <View style={styles.section}>

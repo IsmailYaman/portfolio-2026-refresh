@@ -1,16 +1,26 @@
+import type { Locale } from "./locale";
+
+type L = Record<Locale, string>;
+type LL = Record<Locale, string[]>;
+
 export const SITE = {
   name: "Ismail Kayadelen",
-  tagline: "web developer & designer based in Rotterdam",
+  tagline: { en: "web developer & designer based in Rotterdam", nl: "webdeveloper & designer gevestigd in Rotterdam" } satisfies L,
   email: "hello@ismailkayadelen.com",
-  location: "Rotterdam, Netherlands",
+  location: { en: "Rotterdam, Netherlands", nl: "Rotterdam, Nederland" } satisfies L,
   available: true,
   url: "https://ismailkayadelen.com",
 };
 
 export const bio = {
-  lead: "I'm a web developer based in the Netherlands with 3+ years of experience building web apps and e-com solutions.",
-  secondary:
-    "Outside of work I spend time in the gym and tinkering with my car. Both teach you the same thing: details matter, and shortcuts always show up later.",
+  lead: {
+    en: "I'm a web developer based in the Netherlands with 3+ years of experience building web apps and e-com solutions.",
+    nl: "Ik ben een webdeveloper uit Nederland met 3+ jaar ervaring in het bouwen van webapplicaties en e-commerce oplossingen.",
+  } satisfies L,
+  secondary: {
+    en: "Outside of work I spend time in the gym and tinkering with my car. Both teach you the same thing: details matter, and shortcuts always show up later.",
+    nl: "Buiten werk ben ik in de sportschool te vinden of aan het sleutelen aan mijn auto. Beide leren je hetzelfde: details doen ertoe, en shortcuts komen altijd later terug.",
+  } satisfies L,
 };
 
 export const socials = [
@@ -33,15 +43,15 @@ export type Project = {
   image: string;
   ratio: string;
   tags: string[];
-  role: string;
-  duration: string;
-  description: string;
-  fullDescription: string;
-  highlights: string[];
+  role: L;
+  duration: L;
+  description: L;
+  fullDescription: L;
+  highlights: LL;
   liveUrl?: string;
-  buttonLabel?: string;
+  buttonLabel?: L;
   secondaryUrl?: string;
-  secondaryButtonLabel?: string;
+  secondaryButtonLabel?: L;
 };
 
 export const projects: Project[] = [
@@ -52,22 +62,34 @@ export const projects: Project[] = [
     image: "/work/quickshift.png",
     ratio: "16 / 9",
     tags: ["Framer"],
-    role: "Template Designer & Developer",
-    duration: "4 weeks",
-    description:
-      "A premium Framer template for luxury car rental businesses, featuring a refined booking flow, curated fleet showcase, and concierge-focused design.",
-    fullDescription:
-      "Quickshift is a Framer template designed for luxury car rental businesses. It comes with everything needed to present a high-end fleet — from Audi and BMW to Lamborghini and Rolls Royce — in a way that matches the prestige of the vehicles.\n\nThe template includes a clean booking flow, transparent pricing sections, wedding package pages, and a concierge service layout. It's available for purchase on YAMOTION and is built to be fully customisable out of the box.",
-    highlights: [
-      "Designed a premium Framer template for luxury car rental brands",
-      "Includes fleet showcase, booking flow, wedding packages, and concierge sections",
-      "Published and available for purchase on YAMOTION",
-      "Built fully responsive with a refined visual identity ready to customise",
-    ],
+    role: { en: "Template Designer & Developer", nl: "Sjabloonontwerper & Developer" },
+    duration: { en: "4 weeks", nl: "4 weken" },
+    description: {
+      en: "A premium Framer template for luxury car rental businesses, featuring a refined booking flow, curated fleet showcase, and concierge-focused design.",
+      nl: "Een premium Framer-sjabloon voor luxe autoverhuurbedrijven, met een verfijnde boekingsflow, uitgelichte wagenpark-showcase en een op concierge gerichte uitstraling.",
+    },
+    fullDescription: {
+      en: "Quickshift is a Framer template designed for luxury car rental businesses. It comes with everything needed to present a high-end fleet — from Audi and BMW to Lamborghini and Rolls Royce — in a way that matches the prestige of the vehicles.\n\nThe template includes a clean booking flow, transparent pricing sections, wedding package pages, and a concierge service layout. It's available for purchase on YAMOTION and is built to be fully customisable out of the box.",
+      nl: "Quickshift is een Framer-sjabloon ontworpen voor luxe autoverhuurbedrijven. Het bevat alles wat nodig is om een high-end wagenpark te presenteren — van Audi en BMW tot Lamborghini en Rolls Royce — op een manier die past bij het prestige van de voertuigen.\n\nHet sjabloon bevat een overzichtelijke boekingsflow, transparante prijssecties, pagina's voor trouwpakketten en een concierge-service layout. Het is te koop via YAMOTION en volledig aanpasbaar out-of-the-box.",
+    },
+    highlights: {
+      en: [
+        "Designed a premium Framer template for luxury car rental brands",
+        "Includes fleet showcase, booking flow, wedding packages, and concierge sections",
+        "Published and available for purchase on YAMOTION",
+        "Built fully responsive with a refined visual identity ready to customise",
+      ],
+      nl: [
+        "Premium Framer-sjabloon ontworpen voor luxe autoverhuurmerken",
+        "Inclusief wagenpark-showcase, boekingsflow, trouwpakketten en concierge-secties",
+        "Gepubliceerd en te koop via YAMOTION",
+        "Volledig responsive gebouwd met een verfijnde visuele identiteit, klaar om aan te passen",
+      ],
+    },
     liveUrl: "https://quickshift.framer.website/",
-    buttonLabel: "Visit website",
+    buttonLabel: { en: "Visit website", nl: "Bezoek website" },
     secondaryUrl: "https://yamotion.com/templates",
-    secondaryButtonLabel: "Get template",
+    secondaryButtonLabel: { en: "Get template", nl: "Sjabloon aanschaffen" },
   },
   {
     title: "Pure Fuel Solution",
@@ -76,18 +98,30 @@ export const projects: Project[] = [
     image: "/work/purefuelsolution.png",
     ratio: "16 / 9",
     tags: ["Framer"],
-    role: "Web Designer & Developer",
-    duration: "3 weeks",
-    description: "A website for a 24/7 diesel fuel polishing service protecting critical infrastructure across South Florida.",
-    fullDescription:
-      "Pure Fuel Solution is a professional fuel polishing and tank maintenance service operating 24/7 across South Florida. They specialise in keeping backup generators running for hospitals, data centres, and other critical infrastructure.\n\nThe website was built to clearly communicate their services and four-step process, build trust with key statistics, and make it easy for potential clients to get in touch at any hour.",
-    highlights: [
-      "Designed a trust-focused layout highlighting a 500+ client track record",
-      "Clearly structured a four-step service process for a technical audience",
-      "Built a fully responsive site optimised for 24/7 emergency lead generation",
-    ],
+    role: { en: "Web Designer & Developer", nl: "Webdesigner & Developer" },
+    duration: { en: "3 weeks", nl: "3 weken" },
+    description: {
+      en: "A website for a 24/7 diesel fuel polishing service protecting critical infrastructure across South Florida.",
+      nl: "Een website voor een 24/7 diesel fuel polishing service die kritieke infrastructuur in Zuid-Florida beschermt.",
+    },
+    fullDescription: {
+      en: "Pure Fuel Solution is a professional fuel polishing and tank maintenance service operating 24/7 across South Florida. They specialise in keeping backup generators running for hospitals, data centres, and other critical infrastructure.\n\nThe website was built to clearly communicate their services and four-step process, build trust with key statistics, and make it easy for potential clients to get in touch at any hour.",
+      nl: "Pure Fuel Solution is een professionele fuel polishing- en tankonderhoudsservice die 24/7 actief is in heel Zuid-Florida. Ze zijn gespecialiseerd in het draaiende houden van noodgeneratoren voor ziekenhuizen, datacenters en andere kritieke infrastructuur.\n\nDe website is gebouwd om hun diensten en vierstappenproces duidelijk te communiceren, vertrouwen op te bouwen met kerncijfers, en het voor potentiële klanten op elk moment eenvoudig te maken om contact op te nemen.",
+    },
+    highlights: {
+      en: [
+        "Designed a trust-focused layout highlighting a 500+ client track record",
+        "Clearly structured a four-step service process for a technical audience",
+        "Built a fully responsive site optimised for 24/7 emergency lead generation",
+      ],
+      nl: [
+        "Vertrouwenwekkende layout ontworpen rond een trackrecord van 500+ klanten",
+        "Vierstaps serviceproces helder gestructureerd voor een technisch publiek",
+        "Volledig responsive site gebouwd, geoptimaliseerd voor 24/7 spoedaanvragen",
+      ],
+    },
     liveUrl: "https://www.purefuelsolution.com/",
-    buttonLabel: "Visit website",
+    buttonLabel: { en: "Visit website", nl: "Bezoek website" },
   },
   {
     title: "Global Power Services",
@@ -96,18 +130,30 @@ export const projects: Project[] = [
     image: "/work/global-pow.png",
     ratio: "16 / 9",
     tags: ["Framer", "React"],
-    role: "Web Designer & Developer",
-    duration: "3 weeks",
-    description: "A website for a generator specialist showcasing their products, maintenance services, and commitment to reliable power solutions.",
-    fullDescription:
-      "This client specialises in providing generators and expertise in maintenance and repair services. Their goal is to ensure reliable power solutions for every customer.\n\nThis website was created to showcase their wide range of products and services, as well as their commitment to delivering in the generator industry. With a user-friendly design and detailed content, the platform ensures customers can easily find the right solutions for their power needs.",
-    highlights: [
-      "Designed a clear product and services showcase for a technical audience",
-      "Built with a user-friendly layout to help customers find power solutions quickly",
-      "Delivered a fully responsive site reflecting the client's industry expertise",
-    ],
+    role: { en: "Web Designer & Developer", nl: "Webdesigner & Developer" },
+    duration: { en: "3 weeks", nl: "3 weken" },
+    description: {
+      en: "A website for a generator specialist showcasing their products, maintenance services, and commitment to reliable power solutions.",
+      nl: "Een website voor een generatorspecialist die producten, onderhoudsdiensten en betrouwbare stroomoplossingen laat zien.",
+    },
+    fullDescription: {
+      en: "This client specialises in providing generators and expertise in maintenance and repair services. Their goal is to ensure reliable power solutions for every customer.\n\nThis website was created to showcase their wide range of products and services, as well as their commitment to delivering in the generator industry. With a user-friendly design and detailed content, the platform ensures customers can easily find the right solutions for their power needs.",
+      nl: "Deze klant is gespecialiseerd in generatoren en expertise in onderhoud en reparatie. Hun doel is betrouwbare stroomoplossingen voor elke klant.\n\nDeze website is gemaakt om hun brede assortiment producten en diensten te tonen, samen met hun expertise binnen de generatorindustrie. Met een gebruiksvriendelijk design en gedetailleerde content vinden klanten eenvoudig de juiste oplossing voor hun stroombehoefte.",
+    },
+    highlights: {
+      en: [
+        "Designed a clear product and services showcase for a technical audience",
+        "Built with a user-friendly layout to help customers find power solutions quickly",
+        "Delivered a fully responsive site reflecting the client's industry expertise",
+      ],
+      nl: [
+        "Heldere showcase van producten en diensten ontworpen voor een technisch publiek",
+        "Gebruiksvriendelijke layout gebouwd zodat klanten snel de juiste oplossing vinden",
+        "Volledig responsive site opgeleverd die de expertise van de klant weerspiegelt",
+      ],
+    },
     liveUrl: "https://global-pow.com/",
-    buttonLabel: "Visit website",
+    buttonLabel: { en: "Visit website", nl: "Bezoek website" },
   },
   {
     title: "YAMOTION",
@@ -116,18 +162,30 @@ export const projects: Project[] = [
     image: "/work/yamotion.png",
     ratio: "16 / 9",
     tags: ["Framer", "React"],
-    role: "Founder & Developer",
-    duration: "Ongoing",
-    description: "My freelance web development business, specializing in Framer websites and Shopify webshops with a focus on design, performance, and user experience.",
-    fullDescription:
-      "YAMOTION is my freelance web development business, specializing in Framer websites and Shopify webshops with a focus on design, performance, and user experience. I create modern, interactive, and high-quality web solutions tailored to clients' needs.",
-    highlights: [
-      "Founded and built the full brand identity and website",
-      "Specialises in Framer websites and Shopify webshops",
-      "Focused on design quality, performance, and user experience",
-    ],
+    role: { en: "Founder & Developer", nl: "Oprichter & Developer" },
+    duration: { en: "Ongoing", nl: "Doorlopend" },
+    description: {
+      en: "My freelance web development business, specializing in Framer websites and Shopify webshops with a focus on design, performance, and user experience.",
+      nl: "Mijn freelance webdevelopment-bedrijf, gespecialiseerd in Framer-websites en Shopify-webshops met focus op design, performance en gebruikservaring.",
+    },
+    fullDescription: {
+      en: "YAMOTION is my freelance web development business, specializing in Framer websites and Shopify webshops with a focus on design, performance, and user experience. I create modern, interactive, and high-quality web solutions tailored to clients' needs.",
+      nl: "YAMOTION is mijn freelance webdevelopment-bedrijf, gespecialiseerd in Framer-websites en Shopify-webshops met focus op design, performance en gebruikservaring. Ik bouw moderne, interactieve en hoogwaardige weboplossingen op maat van de klant.",
+    },
+    highlights: {
+      en: [
+        "Founded and built the full brand identity and website",
+        "Specialises in Framer websites and Shopify webshops",
+        "Focused on design quality, performance, and user experience",
+      ],
+      nl: [
+        "Volledige merkidentiteit en website opgezet en gebouwd",
+        "Gespecialiseerd in Framer-websites en Shopify-webshops",
+        "Focus op designkwaliteit, performance en gebruikservaring",
+      ],
+    },
     liveUrl: "https://yamotion.com/",
-    buttonLabel: "Visit website",
+    buttonLabel: { en: "Visit website", nl: "Bezoek website" },
   },
   {
     title: "Ajeeth Muthu — Portfolio",
@@ -136,18 +194,30 @@ export const projects: Project[] = [
     image: "/work/ajeeth.png",
     ratio: "16 / 9",
     tags: ["Next.js", "React", "Tailwind CSS"],
-    role: "Web Designer & Developer",
-    duration: "3 weeks",
-    description: "A personal portfolio for a data professional based in Den Haag, showcasing expertise in data engineering, machine learning, and AI.",
-    fullDescription:
-      "A modern portfolio website built for Ajeeth Muthu, a Data Steward based in Den Haag, Netherlands. The site presents his background in data engineering, machine learning, and AI in a clean, animated interface.\n\nThe portfolio highlights his hard skills — Python, SQL, Power BI, Tableau — alongside his professional experience across data-focused roles. Personal touches throughout the site give it a human feel that goes beyond a standard CV.",
-    highlights: [
-      "Designed and built a fully responsive portfolio with animated transitions",
-      "Structured content to showcase both technical skills and personality",
-      "Deployed on Vercel with Next.js for fast, reliable performance",
-    ],
+    role: { en: "Web Designer & Developer", nl: "Webdesigner & Developer" },
+    duration: { en: "3 weeks", nl: "3 weken" },
+    description: {
+      en: "A personal portfolio for a data professional based in Den Haag, showcasing expertise in data engineering, machine learning, and AI.",
+      nl: "Een persoonlijk portfolio voor een data-professional uit Den Haag, met focus op data engineering, machine learning en AI.",
+    },
+    fullDescription: {
+      en: "A modern portfolio website built for Ajeeth Muthu, a Data Steward based in Den Haag, Netherlands. The site presents his background in data engineering, machine learning, and AI in a clean, animated interface.\n\nThe portfolio highlights his hard skills — Python, SQL, Power BI, Tableau — alongside his professional experience across data-focused roles. Personal touches throughout the site give it a human feel that goes beyond a standard CV.",
+      nl: "Een moderne portfoliowebsite gebouwd voor Ajeeth Muthu, een Data Steward uit Den Haag. De site presenteert zijn achtergrond in data engineering, machine learning en AI in een strakke, geanimeerde interface.\n\nHet portfolio belicht zijn technische vaardigheden — Python, SQL, Power BI, Tableau — naast zijn werkervaring in data-gerichte rollen. Persoonlijke accenten door de hele site geven het een menselijk gevoel dat verder gaat dan een standaard cv.",
+    },
+    highlights: {
+      en: [
+        "Designed and built a fully responsive portfolio with animated transitions",
+        "Structured content to showcase both technical skills and personality",
+        "Deployed on Vercel with Next.js for fast, reliable performance",
+      ],
+      nl: [
+        "Volledig responsive portfolio ontworpen en gebouwd met geanimeerde transities",
+        "Content gestructureerd om zowel technische skills als persoonlijkheid te tonen",
+        "Gedeployed op Vercel met Next.js voor snelle, betrouwbare performance",
+      ],
+    },
     liveUrl: "https://ajeethmuthu.vercel.app/",
-    buttonLabel: "Visit website",
+    buttonLabel: { en: "Visit website", nl: "Bezoek website" },
   },
   {
     title: "CP-AR",
@@ -156,19 +226,32 @@ export const projects: Project[] = [
     image: "/work/cp-ar.png",
     ratio: "4 / 3",
     tags: ["A-Frame", "8th Wall", "Blender"],
-    role: "XR Developer",
-    duration: "5 months",
-    description: "A web-AR experience to teach the basics of first aid actions for a heart attack emergency, built as a thesis project.",
-    fullDescription:
-      "CP-AR is a web-AR experience to make sure you know the basics of first aid actions for a heart attack emergency.\n\nCP-AR was my thesis project that I had the opportunity to develop for my studies in Creative Media & Game Technologies. Extensive research was done on the areas where improvements could be made within heart attack emergencies in the Netherlands.",
-    highlights: [
-      "Researched improvements in heart attack emergency response in the Netherlands",
-      "Built a web-AR experience accessible on mobile without an app install",
-      "Modelled and animated 3D assets in Blender for the AR scene",
-      "Completed as thesis project for Creative Media & Game Technologies",
-    ],
+    role: { en: "XR Developer", nl: "XR Developer" },
+    duration: { en: "5 months", nl: "5 maanden" },
+    description: {
+      en: "A web-AR experience to teach the basics of first aid actions for a heart attack emergency, built as a thesis project.",
+      nl: "Een web-AR ervaring om de basis van eerste hulp bij een hartaanval aan te leren, gebouwd als afstudeerproject.",
+    },
+    fullDescription: {
+      en: "CP-AR is a web-AR experience to make sure you know the basics of first aid actions for a heart attack emergency.\n\nCP-AR was my thesis project that I had the opportunity to develop for my studies in Creative Media & Game Technologies. Extensive research was done on the areas where improvements could be made within heart attack emergencies in the Netherlands.",
+      nl: "CP-AR is een web-AR ervaring die ervoor zorgt dat je de basis van eerste hulp bij een hartaanval kent.\n\nCP-AR was mijn afstudeerproject, ontwikkeld voor mijn studie Creative Media & Game Technologies. Er is uitgebreid onderzoek gedaan naar de gebieden waarop verbeteringen mogelijk zijn binnen hartaanval-noodsituaties in Nederland.",
+    },
+    highlights: {
+      en: [
+        "Researched improvements in heart attack emergency response in the Netherlands",
+        "Built a web-AR experience accessible on mobile without an app install",
+        "Modelled and animated 3D assets in Blender for the AR scene",
+        "Completed as thesis project for Creative Media & Game Technologies",
+      ],
+      nl: [
+        "Onderzoek gedaan naar verbeteringen in de respons bij hartaanval-noodsituaties in Nederland",
+        "Web-AR ervaring gebouwd, toegankelijk op mobiel zonder app-installatie",
+        "3D-assets gemodelleerd en geanimeerd in Blender voor de AR-scene",
+        "Afgerond als afstudeerproject voor Creative Media & Game Technologies",
+      ],
+    },
     liveUrl: "https://cp-ar.vercel.app/",
-    buttonLabel: "Visit website (mobile recommended)",
+    buttonLabel: { en: "Visit website (mobile recommended)", nl: "Bezoek website (mobiel aanbevolen)" },
   },
   {
     title: "Achromira",
@@ -177,90 +260,123 @@ export const projects: Project[] = [
     image: "/work/achromira.png",
     ratio: "16 / 9",
     tags: ["Unity", "Blender", "Illustrator"],
-    role: "3D Artist",
-    duration: "4 months",
-    description: "A story-rich platformer where Mira searches for crystal shards to restore colour to three unique worlds.",
-    fullDescription:
-      "Achromira is a story rich platformer where Mira, the character you play as, has to search for all the crystal shards in order to restore colour to her own world and that of others. Follow her on her journey to rescue three unique worlds, Achrome City, Rutate and Gryd.\n\nThis was the second project with the game development minor. As an artist within the team, I worked mainly on the first level of the game. Almost all the assets in this level are done by me. Next to that I also worked on various assets in other levels.",
-    highlights: [
-      "Created nearly all 3D and 2D assets for the first game level",
-      "Contributed additional assets across the remaining two levels",
-      "Published on Steam as part of the game development minor",
-      "Collaborated in a multidisciplinary team using Scrum",
-    ],
+    role: { en: "3D Artist", nl: "3D Artist" },
+    duration: { en: "4 months", nl: "4 maanden" },
+    description: {
+      en: "A story-rich platformer where Mira searches for crystal shards to restore colour to three unique worlds.",
+      nl: "Een verhalende platformer waarin Mira op zoek gaat naar kristalscherven om kleur terug te brengen in drie unieke werelden.",
+    },
+    fullDescription: {
+      en: "Achromira is a story rich platformer where Mira, the character you play as, has to search for all the crystal shards in order to restore colour to her own world and that of others. Follow her on her journey to rescue three unique worlds, Achrome City, Rutate and Gryd.\n\nThis was the second project with the game development minor. As an artist within the team, I worked mainly on the first level of the game. Almost all the assets in this level are done by me. Next to that I also worked on various assets in other levels.",
+      nl: "Achromira is een verhalende platformer waarin Mira, het personage dat je speelt, op zoek moet naar alle kristalscherven om kleur terug te brengen in haar eigen wereld en die van anderen. Volg haar reis om drie unieke werelden te redden: Achrome City, Rutate en Gryd.\n\nDit was het tweede project binnen de minor Game Development. Als artist binnen het team werkte ik voornamelijk aan het eerste level van de game. Vrijwel alle assets in dit level zijn door mij gemaakt. Daarnaast werkte ik ook aan diverse assets in andere levels.",
+    },
+    highlights: {
+      en: [
+        "Created nearly all 3D and 2D assets for the first game level",
+        "Contributed additional assets across the remaining two levels",
+        "Published on Steam as part of the game development minor",
+        "Collaborated in a multidisciplinary team using Scrum",
+      ],
+      nl: [
+        "Vrijwel alle 3D- en 2D-assets voor het eerste level gemaakt",
+        "Aanvullende assets bijgedragen in de overige twee levels",
+        "Gepubliceerd op Steam als onderdeel van de minor Game Development",
+        "Samengewerkt in een multidisciplinair team met Scrum",
+      ],
+    },
     liveUrl: "https://store.steampowered.com/app/1809760/Achromira/",
-    buttonLabel: "Play game",
+    buttonLabel: { en: "Play game", nl: "Speel de game" },
   },
 ].map((p) => ({ ...p, slug: slugify(p.title) }));
 
 export type ExperienceEntry = {
-  title: string;
+  title: L;
   company: string;
   type: "Work" | "Education";
   year: string;
-  description: string;
+  description: L;
 };
 
 export const experience: ExperienceEntry[] = [
   {
-    title: "Full Stack Developer",
+    title: { en: "Full Stack Developer", nl: "Full Stack Developer" },
     company: "Notive",
     type: "Work",
     year: "May 2024 – Present",
-    description:
-      "Returned to Notive as a frontend developer, building modern web applications and contributing to the technical direction of projects. Also working on backend projects and other technical stuff.",
+    description: {
+      en: "Returned to Notive as a frontend developer, building modern web applications and contributing to the technical direction of projects. Also working on backend projects and other technical stuff.",
+      nl: "Teruggekeerd bij Notive als frontend developer, waar ik moderne webapplicaties bouw en meedenk over de technische richting van projecten. Daarnaast werk ik aan backend-projecten en andere technische zaken.",
+    },
   },
   {
-    title: "Frontend Developer",
+    title: { en: "Frontend Developer", nl: "Frontend Developer" },
     company: "Ventaro",
     type: "Work",
     year: "May 2024 – Present",
-    description:
-      "Ventaro, a Notive sister company where the focus lies on smaller scale projects. Working on Framer and Shopify projects, and supporting existing clients with questions.",
+    description: {
+      en: "Ventaro, a Notive sister company where the focus lies on smaller scale projects. Working on Framer and Shopify projects, and supporting existing clients with questions.",
+      nl: "Ventaro, een zusterbedrijf van Notive gericht op kleinschaligere projecten. Ik werk aan Framer- en Shopify-projecten en ondersteun bestaande klanten met vragen.",
+    },
   },
   {
-    title: "Founder",
+    title: { en: "Founder", nl: "Oprichter" },
     company: "YAMOTION",
     type: "Work",
     year: "Nov 2024 – Present",
-    description: "Founded YAMOTION, where I focus on creating websites and webshops for my clients.",
+    description: {
+      en: "Founded YAMOTION, where I focus on creating websites and webshops for my clients.",
+      nl: "YAMOTION opgericht, waar ik me richt op het bouwen van websites en webshops voor klanten.",
+    },
   },
   {
-    title: "XR Developer Intern (Thesis)",
+    title: { en: "XR Developer Intern (Thesis)", nl: "XR Developer Stagiair (Afstuderen)" },
     company: "360fabriek",
     type: "Work",
     year: "Sep 2023 – Feb 2024",
-    description:
-      "Completed my thesis internship focusing on XR development, exploring immersive technologies and their applications in the healthcare industry.",
+    description: {
+      en: "Completed my thesis internship focusing on XR development, exploring immersive technologies and their applications in the healthcare industry.",
+      nl: "Afstudeerstage gericht op XR-development, waarbij ik immersieve technologieën en hun toepassingen binnen de zorgsector heb onderzocht.",
+    },
   },
   {
-    title: "Frontend Developer",
+    title: { en: "Frontend Developer", nl: "Frontend Developer" },
     company: "WeAreReasonablePeople",
     type: "Work",
     year: "Aug 2022 – Sep 2023",
-    description: "Developed user interfaces and dashboards, collaborating with design and backend teams to deliver high-quality digital products.",
+    description: {
+      en: "Developed user interfaces and dashboards, collaborating with design and backend teams to deliver high-quality digital products.",
+      nl: "Interfaces en dashboards ontwikkeld, in samenwerking met design- en backendteams om hoogwaardige digitale producten op te leveren.",
+    },
   },
   {
-    title: "Frontend Developer Intern",
+    title: { en: "Frontend Developer Intern", nl: "Frontend Developer Stagiair" },
     company: "Notive",
     type: "Work",
     year: "Aug 2020 – Jan 2021",
-    description: "Started my professional journey as a frontend development intern, learning industry practices and contributing to real-world projects.",
+    description: {
+      en: "Started my professional journey as a frontend development intern, learning industry practices and contributing to real-world projects.",
+      nl: "Startte mijn professionele carrière als frontend development stagiair, waar ik de praktijk leerde kennen en meewerkte aan echte projecten.",
+    },
   },
   {
-    title: "Bachelor of Creative Media & Game Technologies",
+    title: { en: "Bachelor of Creative Media & Game Technologies", nl: "Bachelor Creative Media & Game Technologies" },
     company: "University of Applied Sciences, Rotterdam",
     type: "Education",
     year: "Sep 2018 – Feb 2023",
-    description: "Pursued a degree in Creative Media & Game Technologies with emphasis on frontend development and design.",
+    description: {
+      en: "Pursued a degree in Creative Media & Game Technologies with emphasis on frontend development and design.",
+      nl: "Een opleiding Creative Media & Game Technologies gevolgd met de nadruk op frontend development en design.",
+    },
   },
   {
-    title: "MBO 4 — Software Engineer",
+    title: { en: "MBO 4 — Software Engineer", nl: "MBO 4 — Software Engineer" },
     company: "ROC Mondriaan, The Hague",
     type: "Education",
     year: "Sep 2015 – June 2018",
-    description:
-      "Gained valuable experience in both frontend and backend development, with a strong preference for frontend work due to the immediate visual feedback and creative possibilities.",
+    description: {
+      en: "Gained valuable experience in both frontend and backend development, with a strong preference for frontend work due to the immediate visual feedback and creative possibilities.",
+      nl: "Waardevolle ervaring opgedaan in zowel frontend als backend development, met een sterke voorkeur voor frontend werk vanwege de directe visuele feedback en creatieve mogelijkheden.",
+    },
   },
 ];
 

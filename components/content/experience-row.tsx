@@ -7,7 +7,9 @@ export function ExperienceRow({
   company = "Jackson Kibby, Berlin",
   year = "2023",
   header = false,
+  titleLabel = "Title",
   companyLabel = "Company",
+  yearLabel = "Year",
   style,
   ...rest
 }: {
@@ -15,7 +17,9 @@ export function ExperienceRow({
   company?: string;
   year?: string;
   header?: boolean;
+  titleLabel?: string;
   companyLabel?: string;
+  yearLabel?: string;
   style?: React.CSSProperties;
 } & React.HTMLAttributes<HTMLDivElement>) {
   const [hover, setHover] = React.useState(false);
@@ -36,9 +40,9 @@ export function ExperienceRow({
         style={{ alignItems: "baseline", padding: "0 0 var(--ev-space-3)", borderBottom: "1px solid var(--ev-border-hairline)", ...style }}
         {...rest}
       >
-        <span style={headerCell}>[ Title ]</span>
+        <span style={headerCell}>[ {titleLabel} ]</span>
         <span style={headerCell}>[ {companyLabel} ]</span>
-        <span style={{ ...headerCell, textAlign: "right" }}>[ Year ]</span>
+        <span style={{ ...headerCell, textAlign: "right" }}>[ {yearLabel} ]</span>
       </div>
     );
   }

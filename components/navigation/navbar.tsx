@@ -7,18 +7,22 @@ export function Navbar({
   name = "Ismail Kayadelen",
   ctaLabel = "Contact me",
   ctaHref = "/contact",
+  menuLabel = "Open menu",
   inverse = false,
   floating = true,
   onMenu,
+  toggle,
   style,
   ...rest
 }: {
   name?: string;
   ctaLabel?: string;
   ctaHref?: string;
+  menuLabel?: string;
   inverse?: boolean;
   floating?: boolean;
   onMenu?: () => void;
+  toggle?: React.ReactNode;
   style?: React.CSSProperties;
 } & React.HTMLAttributes<HTMLElement>) {
   return (
@@ -41,7 +45,8 @@ export function Navbar({
       {...rest}
     >
       <Logo name={name} inverse={inverse} href="/" />
-      <div style={{ display: "flex", alignItems: "center", gap: "var(--ev-space-3)" }}>
+      <div style={{ display: "flex", alignItems: "center", gap: "var(--ev-space-4)" }}>
+        {toggle}
         <span className="ev-navbar-cta">
           <Button variant="outline" size="sm" inverse={inverse} href={ctaHref} arrow>
             {ctaLabel}
@@ -49,7 +54,7 @@ export function Navbar({
         </span>
         <button
           onClick={onMenu}
-          aria-label="Open menu"
+          aria-label={menuLabel}
           style={{
             display: "inline-flex",
             alignItems: "center",

@@ -46,6 +46,7 @@ export function FooterCTA({
   ],
   credit = "© 2026 — Made with care",
   marquee = true,
+  marqueeText = "Let's work together",
   style,
   ...rest
 }: {
@@ -55,6 +56,7 @@ export function FooterCTA({
   columns?: { title: string; links: { label: string; href?: string }[] }[];
   credit?: string;
   marquee?: boolean;
+  marqueeText?: string;
   style?: React.CSSProperties;
 } & React.HTMLAttributes<HTMLElement>) {
   return (
@@ -88,7 +90,7 @@ export function FooterCTA({
 
       {marquee && (
         <div style={{ margin: "var(--ev-space-9) 0 var(--ev-space-6)" }}>
-          <Marquee items={["Let's work together"]} inverse outline size="clamp(48px, 9vw, 130px)" speed={34} />
+          <Marquee items={[marqueeText]} inverse outline size="clamp(48px, 9vw, 130px)" speed={34} />
         </div>
       )}
 
