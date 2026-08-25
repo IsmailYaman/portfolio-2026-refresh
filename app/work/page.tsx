@@ -18,7 +18,7 @@ export default async function Work() {
       <section style={{ padding: "0 var(--ev-gutter) var(--ev-space-9)" }}>
         <div className="ev-work-grid" style={{ gap: "var(--ev-grid-gap)" }}>
           {projects.map((it) => (
-            <WorkCard key={it.title} title={it.title} category={it.type} year={it.year} image={it.image} ratio={it.ratio} href={`/work/${it.slug}`} viewLabel={d.work.viewLabel} />
+            <WorkCard key={it.title} title={it.title} category={it.type} year={it.year} image={it.image} ratio="16 / 9" href={`/work/${it.slug}`} viewLabel={d.work.viewLabel} />
           ))}
         </div>
       </section>

@@ -87,7 +87,7 @@ export function WorkCard({
           <Icon name="arrow-up-right" size={20} color="var(--ev-ink)" />
         </span>
       </div>
-      <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: "var(--ev-space-4)" }}>
+      <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "var(--ev-space-4)" }}>
         <span
           style={{
             fontFamily: "var(--ev-font-display)",
