@@ -30,20 +30,20 @@ const LANGUAGE_LEVEL: Record<Locale, Record<string, string>> = {
 };
 
 const HOBBY: Record<Locale, Record<string, string>> = {
-  en: { Gym: "Gym", Cars: "Cars" },
-  nl: { Gym: "Sporten", Cars: "Auto's" },
+  en: { Gym: "Gym", Cars: "Cars", Travel: "Travel", Gaming: "Gaming" },
+  nl: { Gym: "Sporten", Cars: "Auto's", Travel: "Reizen", Gaming: "Gamen" },
 };
 
 const styles = StyleSheet.create({
   page: {
-    padding: 34,
+    padding: 30,
     fontFamily: "Helvetica",
     fontSize: 10,
     color: INK,
   },
   name: {
     fontFamily: "Helvetica-Bold",
-    fontSize: 25,
+    fontSize: 24,
     textTransform: "uppercase",
     letterSpacing: -0.5,
   },
@@ -60,8 +60,8 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     columnGap: 16,
     rowGap: 3,
-    marginTop: 10,
-    paddingTop: 10,
+    marginTop: 8,
+    paddingTop: 8,
     borderTopWidth: 1,
     borderTopColor: HAIRLINE,
   },
@@ -72,42 +72,44 @@ const styles = StyleSheet.create({
     letterSpacing: 0.5,
     color: SECONDARY,
   },
-  section: { marginTop: 12 },
+  section: { marginTop: 10 },
   sectionTitle: {
     fontFamily: "Helvetica-Bold",
-    fontSize: 11,
+    fontSize: 10.5,
     textTransform: "uppercase",
     color: ACCENT,
-    marginBottom: 5,
+    marginBottom: 4,
   },
-  paragraph: { fontSize: 9, lineHeight: 1.4, color: INK },
+  paragraph: { fontSize: 9, lineHeight: 1.35, color: INK },
   row: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "flex-start",
-    paddingVertical: 5,
+    paddingVertical: 4,
     borderBottomWidth: 1,
     borderBottomColor: HAIRLINE,
   },
   rowLeft: { flexDirection: "column", flexGrow: 1, paddingRight: 12 },
-  rowTitle: { fontFamily: "Helvetica-Bold", fontSize: 10, textTransform: "uppercase" },
-  rowCompany: { fontFamily: "Courier", fontSize: 8, color: SECONDARY, marginTop: 2 },
-  rowDescription: { fontSize: 8, lineHeight: 1.3, color: SECONDARY, marginTop: 2 },
-  rowYear: { fontFamily: "Courier", fontSize: 8, color: SECONDARY, textAlign: "right", minWidth: 105 },
-  footerRow: { flexDirection: "row", marginTop: 12, gap: 24 },
+  rowTitle: { fontFamily: "Helvetica-Bold", fontSize: 9.5, textTransform: "uppercase" },
+  rowCompany: { fontFamily: "Courier", fontSize: 7.5, color: SECONDARY, marginTop: 2 },
+  rowDescription: { fontSize: 7.5, lineHeight: 1.25, color: SECONDARY, marginTop: 2 },
+  rowYear: { fontFamily: "Courier", fontSize: 7.5, color: SECONDARY, textAlign: "right", minWidth: 100 },
+  bulletList: { marginTop: 2, gap: 1.5 },
+  bulletText: { fontSize: 7.5, lineHeight: 1.25, color: SECONDARY },
+  footerRow: { flexDirection: "row", marginTop: 10, gap: 24 },
   footerCol: { flex: 1 },
-  tagWrap: { flexDirection: "row", flexWrap: "wrap", gap: 5 },
+  tagWrap: { flexDirection: "row", flexWrap: "wrap", gap: 4 },
   tag: {
     fontFamily: "Courier",
-    fontSize: 8,
+    fontSize: 7.5,
     textTransform: "uppercase",
     letterSpacing: 0.5,
     color: INK,
     borderWidth: 1,
     borderColor: HAIRLINE,
     borderRadius: 12,
-    paddingVertical: 3,
-    paddingHorizontal: 8,
+    paddingVertical: 2.5,
+    paddingHorizontal: 7,
   },
 });
 
@@ -119,7 +121,17 @@ function ExperienceRows({ items, locale }: { items: ExperienceEntry[]; locale: L
           <View style={styles.rowLeft}>
             <Text style={styles.rowTitle}>{item.title[locale]}</Text>
             <Text style={styles.rowCompany}>{item.company}</Text>
-            <Text style={styles.rowDescription}>{item.description[locale]}</Text>
+            {item.bullets ? (
+              <View style={styles.bulletList}>
+                {item.bullets[locale].map((b) => (
+                  <Text key={b} style={styles.bulletText}>
+                    — {b}
+                  </Text>
+                ))}
+              </View>
+            ) : (
+              <Text style={styles.rowDescription}>{item.description[locale]}</Text>
+            )}
           </View>
           <Text style={styles.rowYear}>{item.year[locale]}</Text>
         </View>

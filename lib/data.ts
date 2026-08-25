@@ -5,9 +5,9 @@ type LL = Record<Locale, string[]>;
 
 export const SITE = {
   name: "Ismail Kayadelen",
-  tagline: { en: "web developer & designer based in Rotterdam", nl: "webdeveloper & designer gevestigd in Rotterdam" } satisfies L,
+  tagline: { en: "web developer & designer based in the Netherlands", nl: "webdeveloper & designer gevestigd in Nederland" } satisfies L,
   email: "hello@ismailkayadelen.com",
-  location: { en: "Rotterdam, Netherlands", nl: "Rotterdam, Nederland" } satisfies L,
+  location: { en: "Netherlands", nl: "Nederland" } satisfies L,
   available: true,
   url: "https://ismailkayadelen.com",
 };
@@ -295,6 +295,7 @@ export type ExperienceEntry = {
   type: "Work" | "Education";
   year: L;
   description: L;
+  bullets?: LL;
 };
 
 export const experience: ExperienceEntry[] = [
@@ -306,6 +307,20 @@ export const experience: ExperienceEntry[] = [
     description: {
       en: "Returned to Notive as a frontend developer, building modern web applications and contributing to the technical direction of projects. Also working on backend projects and other technical stuff.",
       nl: "Teruggekeerd bij Notive als frontend developer, waar ik moderne webapplicaties bouw en meedenk over de technische richting van projecten. Daarnaast werk ik aan backend-projecten en andere technische zaken.",
+    },
+    bullets: {
+      en: [
+        "Developed new software using React, TypeScript, and Laravel",
+        "Provided technical support and software assistance to clients",
+        "Delivered workshops and training sessions on Shopify and Framer",
+        "Managed client communication and guided projects from kickoff to delivery",
+      ],
+      nl: [
+        "Nieuwe software ontwikkeld met React, TypeScript en Laravel",
+        "Technische ondersteuning en software support verleend aan klanten",
+        "Workshops en trainingen gegeven in Shopify en Framer",
+        "Klantcommunicatie onderhouden en projecten begeleid van start tot oplevering",
+      ],
     },
   },
   {
@@ -337,15 +352,31 @@ export const experience: ExperienceEntry[] = [
       en: "Completed my thesis internship focusing on XR development, exploring immersive technologies and their applications in the healthcare industry.",
       nl: "Afstudeerstage gericht op XR-development, waarbij ik immersieve technologieën en hun toepassingen binnen de zorgsector heb onderzocht.",
     },
+    bullets: {
+      en: [
+        "Thesis research into how web-AR can make inexperienced people more aware of the correct first-aid actions during a heart attack",
+        "Conducted qualitative research, including interviews with users and experts",
+        "Developed and tested a web-AR prototype within a multidisciplinary project team",
+      ],
+      nl: [
+        "Afstudeeronderzoek naar hoe web-AR onervaren mensen bewuster kan maken van de juiste handelingen bij eerste hulp aan een hartaanval",
+        "Kwalitatief onderzoek uitgevoerd, waaronder interviews met gebruikers en experts",
+        "Web-AR prototype ontwikkeld en getest binnen een multidisciplinair projectteam",
+      ],
+    },
   },
   {
-    title: { en: "Frontend Developer", nl: "Frontend Developer" },
+    title: { en: "Junior Creative Developer", nl: "Junior Creative Developer" },
     company: "WeAreReasonablePeople",
     type: "Work",
     year: { en: "Aug 2022 – Sep 2023", nl: "Aug 2022 – Sep 2023" },
     description: {
       en: "Developed user interfaces and dashboards, collaborating with design and backend teams to deliver high-quality digital products.",
       nl: "Interfaces en dashboards ontwikkeld, in samenwerking met design- en backendteams om hoogwaardige digitale producten op te leveren.",
+    },
+    bullets: {
+      en: ["Contributed to a variety of projects within multidisciplinary teams", "Participated in and organised retrospectives, reviews, and other Scrum events"],
+      nl: ["Meegewerkt aan diverse projecten binnen multidisciplinaire teams", "Retrospectives, reviews en andere Scrum events bijgewoond en (mede) georganiseerd"],
     },
   },
   {
@@ -362,7 +393,7 @@ export const experience: ExperienceEntry[] = [
     title: { en: "Bachelor of Creative Media & Game Technologies", nl: "Bachelor Creative Media & Game Technologies" },
     company: "University of Applied Sciences, Rotterdam",
     type: "Education",
-    year: { en: "Sep 2018 – Feb 2023", nl: "Sep 2018 – Feb 2023" },
+    year: { en: "Sep 2018 – Feb 2024", nl: "Sep 2018 – Feb 2024" },
     description: {
       en: "Pursued a degree in Creative Media & Game Technologies with emphasis on frontend development and design.",
       nl: "Een opleiding Creative Media & Game Technologies gevolgd met de nadruk op frontend development en design.",
@@ -386,7 +417,7 @@ export const languages = [
   { name: "English", level: "Fluent" },
 ];
 
-export const hobbies = ["Gym", "Cars"];
+export const hobbies = ["Gym", "Cars", "Travel", "Gaming"];
 
 export const workExperience = experience.filter((e) => e.type === "Work");
 export const education = experience.filter((e) => e.type === "Education");
@@ -421,6 +452,7 @@ export const tools = [
   "Next.js",
   "TypeScript",
   "Laravel",
+  "PHP",
   "Tailwind",
   "Framer",
   "Figma",
