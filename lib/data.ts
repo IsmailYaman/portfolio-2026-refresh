@@ -23,6 +23,11 @@ export const bio = {
   } satisfies L,
 };
 
+export const cvProfile = {
+  en: "Creative developer based in the Netherlands with 3+ years of experience building web apps and e-com solutions. I like combining creative technology with technical know-how to build interactive products that not only work well, but are also pleasant to use and look sharp.",
+  nl: "Creatieve developer uit Nederland met 3+ jaar ervaring in het bouwen van webapplicaties en e-commerce oplossingen. Ik combineer graag creatieve technologie met technische kennis om interactieve toepassingen te bouwen die niet alleen goed werken, maar ook prettig zijn in gebruik en er strak uitzien.",
+} satisfies L;
+
 export const socials = [
   { label: "GitHub", href: "https://github.com/IsmailYaman" },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/ismail-kayadelen/" },

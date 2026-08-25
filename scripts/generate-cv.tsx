@@ -6,7 +6,7 @@
  * Run with: npm run generate:cv
  */
 import { renderToFile, Document, Page, Text, View, StyleSheet } from "@react-pdf/renderer";
-import { SITE, bio, workExperience, education, tools, socials, languages, hobbies, type ExperienceEntry } from "../lib/data";
+import { SITE, cvProfile, workExperience, education, tools, socials, languages, hobbies, type ExperienceEntry } from "../lib/data";
 import type { Locale } from "../lib/locale";
 
 const INK = "#050505";
@@ -160,7 +160,7 @@ function CvDocument({ locale }: { locale: Locale }) {
 
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>{l.profile}</Text>
-          <Text style={styles.paragraph}>{bio.lead[locale]}</Text>
+          <Text style={styles.paragraph}>{cvProfile[locale]}</Text>
         </View>
 
         <View style={styles.section}>
