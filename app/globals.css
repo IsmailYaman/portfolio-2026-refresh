@@ -410,6 +410,21 @@ button {
   }
 }
 
+.ev-work-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) {
+  .ev-work-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 960px) {
+  .ev-work-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 .ev-award-row {
   display: grid;
   grid-template-columns: 1fr;
