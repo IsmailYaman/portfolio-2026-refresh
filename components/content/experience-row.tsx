@@ -8,7 +8,6 @@ export function ExperienceRow({
   year = "2023",
   header = false,
   titleLabel = "Title",
-  companyLabel = "Company",
   yearLabel = "Year",
   style,
   ...rest
@@ -18,7 +17,6 @@ export function ExperienceRow({
   year?: string;
   header?: boolean;
   titleLabel?: string;
-  companyLabel?: string;
   yearLabel?: string;
   style?: React.CSSProperties;
 } & React.HTMLAttributes<HTMLDivElement>) {
@@ -36,12 +34,11 @@ export function ExperienceRow({
     };
     return (
       <div
-        className="ev-exp-row ev-exp-header"
+        className="ev-exp-top ev-exp-header"
         style={{ alignItems: "baseline", padding: "0 0 var(--ev-space-3)", borderBottom: "1px solid var(--ev-border-hairline)", ...style }}
         {...rest}
       >
         <span style={headerCell}>[ {titleLabel} ]</span>
-        <span style={headerCell}>[ {companyLabel} ]</span>
         <span style={{ ...headerCell, textAlign: "right" }}>[ {yearLabel} ]</span>
       </div>
     );
@@ -70,7 +67,6 @@ export function ExperienceRow({
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       style={{
-        alignItems: "baseline",
         padding: "var(--ev-space-5) 0",
         borderBottom: "1px solid var(--ev-border-hairline)",
         background: hover ? "var(--ev-paper-tint)" : "transparent",
@@ -79,18 +75,14 @@ export function ExperienceRow({
       }}
       {...rest}
     >
-      <span className="ev-exp-title" style={cell}>
-        {title}
-      </span>
-      <span className="ev-exp-company" style={meta}>
-        {company}
-      </span>
-      <span className="ev-exp-year" style={{ ...meta, textAlign: "right" }}>
-        {year}
-      </span>
-      <span className="ev-exp-mobile-meta" style={meta}>
-        {company}
-      </span>
+      <div className="ev-exp-top">
+        <span className="ev-exp-title" style={cell}>
+          {title} — {company}
+        </span>
+        <span className="ev-exp-year" style={{ ...meta, textAlign: "right" }}>
+          {year}
+        </span>
+      </div>
     </div>
   );
 }

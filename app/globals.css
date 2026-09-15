@@ -355,36 +355,63 @@ button {
 }
 
 .ev-exp-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ev-space-2);
+}
+.ev-exp-top {
   display: grid;
-  /* minmax(0, Nfr) instead of bare Nfr, and a fixed year column: each row is
+  /* minmax(0, 1fr) instead of a bare 1fr, and a fixed year column: each row is
      its own grid (not shared rows of one table), so any content-based track
-     sizing (the default for bare fr tracks) drifts per row and the header's
+     sizing (the default for a bare fr track) drifts per row and the header's
      short labels stop lining up with the data below it. */
   grid-template-columns: minmax(0, 1fr) 170px;
   gap: var(--ev-space-2) var(--ev-space-5);
+  align-items: baseline;
 }
 .ev-exp-header {
   display: none;
 }
-.ev-exp-company {
-  display: none;
-}
-.ev-exp-mobile-meta {
-  grid-column: 1 / -1;
-}
 @media (min-width: 640px) {
-  .ev-exp-row {
-    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) 170px;
-  }
   .ev-exp-header {
     display: grid;
   }
-  .ev-exp-company {
-    display: block;
+}
+
+.ev-masthead-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ev-grid-gap);
+  align-items: start;
+}
+@media (min-width: 860px) {
+  .ev-masthead-grid {
+    grid-template-columns: 1.3fr 1fr;
+    align-items: end;
   }
-  .ev-exp-mobile-meta {
-    display: none;
-  }
+}
+.ev-fact-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: var(--ev-space-3) 0;
+  border-bottom: 1px solid var(--ev-border-inverse);
+}
+.ev-fact-row:last-child {
+  border-bottom: none;
+}
+.ev-fact-key {
+  font-family: var(--ev-font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: var(--ev-ls-label);
+  color: var(--ev-text-on-inverse-secondary);
+}
+.ev-fact-value {
+  font-family: var(--ev-font-display);
+  font-size: 18px;
+  font-weight: var(--ev-w-bold);
+  color: var(--ev-text-on-inverse);
 }
 
 .ev-accent-heading {

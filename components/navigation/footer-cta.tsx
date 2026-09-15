@@ -42,7 +42,7 @@ export function FooterCTA({
     { title: "Contact", links: [{ label: "Phone" }, { label: "Email" }] },
     { title: "Pages", links: [{ label: "About", href: "/about" }, { label: "Work", href: "/work" }] },
   ],
-  credit = "© 2026 — Made with care",
+  credit = `© ${new Date().getFullYear()} — Made with care`,
   marquee = true,
   marqueeText = "Let's work together",
   style,

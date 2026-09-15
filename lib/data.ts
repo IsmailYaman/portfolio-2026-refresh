@@ -3,9 +3,21 @@ import type { Locale } from "./locale";
 type L = Record<Locale, string>;
 type LL = Record<Locale, string[]>;
 
+const EXPERIENCE_START = new Date(2023, 1, 1); // Feb 2023
+
+function yearsSince(date: Date): number {
+  const now = new Date();
+  let years = now.getFullYear() - date.getFullYear();
+  const anniversaryPassed = now.getMonth() > date.getMonth() || (now.getMonth() === date.getMonth() && now.getDate() >= date.getDate());
+  if (!anniversaryPassed) years--;
+  return years;
+}
+
+export const experienceYears = yearsSince(EXPERIENCE_START);
+
 export const SITE = {
   name: "Ismail Kayadelen",
-  tagline: { en: "web developer & designer based in the Netherlands", nl: "webdeveloper & designer gevestigd in Nederland" } satisfies L,
+  tagline: { en: "Full stack developer based in the Netherlands", nl: "Full stack developer gevestigd in Nederland" } satisfies L,
   email: "hello@ismailkayadelen.com",
   location: { en: "Netherlands", nl: "Nederland" } satisfies L,
   available: true,
@@ -14,8 +26,8 @@ export const SITE = {
 
 export const bio = {
   lead: {
-    en: "I'm a web developer based in the Netherlands with 3+ years of experience building web apps and e-com solutions.",
-    nl: "Ik ben een webdeveloper uit Nederland met 3+ jaar ervaring in het bouwen van webapplicaties en e-commerce oplossingen.",
+    en: `I'm a full stack developer based in the Netherlands with ${experienceYears}+ years of experience building web apps and e-com solutions.`,
+    nl: `Ik ben een full stack developer uit Nederland met ${experienceYears}+ jaar ervaring in het bouwen van webapplicaties en e-commerce oplossingen.`,
   } satisfies L,
   secondary: {
     en: "Outside of work I spend time in the gym and tinkering with my car. Both teach you the same thing: details matter, and shortcuts always show up later.",
@@ -24,8 +36,8 @@ export const bio = {
 };
 
 export const cvProfile = {
-  en: "Creative developer based in the Netherlands with 3+ years of experience building web apps and e-com solutions. I like combining creative technology with technical know-how to build interactive products that not only work well, but are also pleasant to use and look sharp.",
-  nl: "Creatieve developer uit Nederland met 3+ jaar ervaring in het bouwen van webapplicaties en e-commerce oplossingen. Ik combineer graag creatieve technologie met technische kennis om interactieve toepassingen te bouwen die niet alleen goed werken, maar ook prettig zijn in gebruik en er strak uitzien.",
+  en: `Creative developer based in the Netherlands with ${experienceYears}+ years of experience building web apps and e-com solutions. I like combining creative technology with technical know-how to build interactive products that not only work well, but are also pleasant to use and look sharp.`,
+  nl: `Creatieve developer uit Nederland met ${experienceYears}+ jaar ervaring in het bouwen van webapplicaties en e-commerce oplossingen. Ik combineer graag creatieve technologie met technische kennis om interactieve toepassingen te bouwen die niet alleen goed werken, maar ook prettig zijn in gebruik en er strak uitzien.`,
 } satisfies L;
 
 export const socials = [
@@ -337,15 +349,23 @@ export const experience: ExperienceEntry[] = [
       en: "Ventaro, a Notive sister company where the focus lies on smaller scale projects. Working on Framer and Shopify projects, and supporting existing clients with questions.",
       nl: "Ventaro, een zusterbedrijf van Notive gericht op kleinschaligere projecten. Ik werk aan Framer- en Shopify-projecten en ondersteun bestaande klanten met vragen.",
     },
+    bullets: {
+      en: ["Working on Framer and Shopify projects for smaller scale clients", "Supporting existing clients with technical questions"],
+      nl: ["Werken aan Framer- en Shopify-projecten voor kleinschaligere klanten", "Bestaande klanten ondersteunen bij technische vragen"],
+    },
   },
   {
-    title: { en: "Founder", nl: "Oprichter" },
+    title: { en: "Founder", nl: "Eigenaar & Developer" },
     company: "YAMOTION",
     type: "Work",
     year: { en: "Nov 2024 – Present", nl: "Nov 2024 – Heden" },
     description: {
       en: "Founded YAMOTION, where I focus on creating websites and webshops for my clients.",
       nl: "YAMOTION opgericht, waar ik me richt op het bouwen van websites en webshops voor klanten.",
+    },
+    bullets: {
+      en: ["Building Framer websites and Shopify webshops for clients", "Handling everything from client communication to delivery"],
+      nl: ["Framer-websites en Shopify-webshops bouwen voor klanten", "Alles verzorgen van klantcommunicatie tot oplevering"],
     },
   },
   {
@@ -393,6 +413,48 @@ export const experience: ExperienceEntry[] = [
       en: "Started my professional journey as a frontend development intern, learning industry practices and contributing to real-world projects.",
       nl: "Startte mijn professionele carrière als frontend development stagiair, waar ik de praktijk leerde kennen en meewerkte aan echte projecten.",
     },
+    bullets: {
+      en: ["Learned industry practices and professional workflows", "Contributed to real-world client projects"],
+      nl: ["Praktijkgerichte werkwijzen en professionele workflows geleerd", "Bijgedragen aan echte klantprojecten"],
+    },
+  },
+  {
+    title: { en: "Teamlead", nl: "Teamleider" },
+    company: "Action",
+    type: "Work",
+    year: { en: "Apr 2022 – Aug 2023", nl: "Apr 2022 – Aug 2023" },
+    description: {
+      en: "Promoted to teamlead after almost four years as a store assistant, running the store as a true one man army.",
+      nl: "Gepromoveerd tot teamleider na bijna vier jaar als winkelmedewerker, waarbij ik de winkel als een echte one man army draaiende hield.",
+    },
+    bullets: {
+      en: [
+        "Guided and supervised colleagues",
+        "Made staff planning and schedules",
+        "Opened and closed the store",
+        "Placed orders and unloaded deliveries",
+      ],
+      nl: [
+        "Collega's begeleid",
+        "Planningen gemaakt",
+        "Winkel geopend en gesloten",
+        "Bestellingen geplaatst en laden gelost",
+      ],
+    },
+  },
+  {
+    title: { en: "Store Assistant", nl: "Winkelmedewerker" },
+    company: "Action",
+    type: "Work",
+    year: { en: "Sep 2018 – Apr 2022", nl: "Sep 2018 – Apr 2022" },
+    description: {
+      en: "Part-time job alongside my studies where I learned a lot, handling day-to-day store work before being promoted to teamlead.",
+      nl: "Bijbaan naast mijn studie waar ik veel heb geleerd, met dagelijkse winkelwerkzaamheden, voordat ik werd gepromoveerd tot teamleider.",
+    },
+    bullets: {
+      en: ["Assisted customers and stocked shelves", "Operated the register and handled daily store tasks"],
+      nl: ["Klanten geholpen en schappen aangevuld", "Kassa bediend en dagelijkse winkeltaken uitgevoerd"],
+    },
   },
   {
     title: { en: "Bachelor of Creative Media & Game Technologies", nl: "Bachelor Creative Media & Game Technologies" },
@@ -403,6 +465,10 @@ export const experience: ExperienceEntry[] = [
       en: "Pursued a degree in Creative Media & Game Technologies with emphasis on frontend development and design.",
       nl: "Een opleiding Creative Media & Game Technologies gevolgd met de nadruk op frontend development en design.",
     },
+    bullets: {
+      en: ["Focused on frontend development and interactive design", "Graduated with a thesis on web-AR for first aid education"],
+      nl: ["Gericht op frontend development en interactief design", "Afgestudeerd met een scriptie over web-AR voor EHBO-educatie"],
+    },
   },
   {
     title: { en: "MBO 4 — Software Engineer", nl: "MBO 4 — Software Engineer" },
@@ -412,6 +478,10 @@ export const experience: ExperienceEntry[] = [
     description: {
       en: "Gained valuable experience in both frontend and backend development, with a strong preference for frontend work due to the immediate visual feedback and creative possibilities.",
       nl: "Waardevolle ervaring opgedaan in zowel frontend als backend development, met een sterke voorkeur voor frontend werk vanwege de directe visuele feedback en creatieve mogelijkheden.",
+    },
+    bullets: {
+      en: ["Learned both frontend and backend development fundamentals", "Discovered a strong preference for frontend work"],
+      nl: ["Basis geleerd in zowel frontend als backend development", "Sterke voorkeur ontdekt voor frontend werk"],
     },
   },
 ];
@@ -452,24 +522,11 @@ export const skills: Skill[] = [
   },
 ];
 
-export const tools = [
-  "React",
-  "Next.js",
-  "TypeScript",
-  "Laravel",
-  "PHP",
-  "Tailwind",
-  "Framer",
-  "Figma",
-  "Git",
-  "Docker",
-  "Vercel",
-  "Shopify",
-  "Python",
-  "Kotlin",
-  "Jetpack Compose",
-  "Blender",
-];
+export const mainStack = ["React", "Next.js", "TypeScript", "Laravel", "PHP", "Tailwind", "Git", "Docker", "Vercel", "Python", "Kotlin", "Jetpack Compose"];
+
+export const otherTools = ["Figma", "Framer", "Shopify", "Blender", "Jira", "Claude", "Gemini", "ChatGPT"];
+
+export const tools = [...mainStack, ...otherTools];
 
 export function getProject(slug: string) {
   return projects.find((p) => p.slug === slug);

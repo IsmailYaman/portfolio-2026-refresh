@@ -5,7 +5,7 @@ import { Marquee } from "@/components/core/marquee";
 import { WorkCard } from "@/components/content/work-card";
 import { ExperienceRow } from "@/components/content/experience-row";
 import { Tag } from "@/components/core/tag";
-import { SITE, projects, tools, workExperience, education } from "@/lib/data";
+import { SITE, projects, mainStack, otherTools, workExperience, education } from "@/lib/data";
 import { t } from "@/lib/dictionary";
 import { getLocale } from "@/lib/get-locale";
 import type { Locale } from "@/lib/locale";
@@ -82,23 +82,59 @@ function Featured({ locale }: { locale: Locale }) {
 
 function Services({ locale }: { locale: Locale }) {
   const d = t(locale);
+  const nameParts = SITE.name.trim().split(/\s+/).filter(Boolean);
+  const facts = [
+    { key: d.home.factLocation, value: SITE.location[locale] },
+    { key: d.home.experience, value: d.home.factExperienceValue },
+    { key: d.home.factRole, value: d.home.factRoleValue },
+  ];
   return (
     <section className="ev-inverse" style={{ padding: "var(--ev-space-9) 0", overflow: "hidden" }}>
-      <div style={{ padding: "0 var(--ev-gutter) var(--ev-space-7)" }}>
-        <Eyebrow inverse dot="paper">
-          {d.home.whatIDo}
-        </Eyebrow>
-        <p className="ev-h2" style={{ marginTop: "var(--ev-space-4)", maxWidth: "22ch" }}>
-          {d.home.hiIAm} {SITE.name} — {SITE.tagline[locale]}
-        </p>
+      <div style={{ padding: "0 var(--ev-gutter) var(--ev-space-6)" }}>
+        <div className="ev-masthead-grid">
+          <p className="ev-h1" style={{ margin: 0 }}>
+            {nameParts[0]}
+            {nameParts.slice(1).map((w, i) => (
+              <span key={i}>
+                <br />
+                {w}
+              </span>
+            ))}
+          </p>
+          <div>
+            <p className="ev-lead" style={{ margin: 0, maxWidth: "34ch", textTransform: "none", color: "var(--ev-text-on-inverse-secondary)" }}>
+              {SITE.tagline[locale]}
+            </p>
+            <div style={{ marginTop: "var(--ev-space-5)" }}>
+              {facts.map((fact) => (
+                <div key={fact.key} className="ev-fact-row">
+                  <span className="ev-fact-key">{fact.key}</span>
+                  <span className="ev-fact-value">{fact.value}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
-      <Marquee items={tools.slice(0, 4)} inverse size="clamp(40px,7vw,96px)" speed={30} />
+      <Marquee items={mainStack.slice(0, 4)} inverse size="clamp(40px,7vw,96px)" speed={30} />
       <div style={{ padding: "var(--ev-space-7) var(--ev-gutter) 0" }}>
+        <Eyebrow inverse dot="none">
+          {d.home.mainStack}
+        </Eyebrow>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--ev-space-3)", marginTop: "var(--ev-space-4)" }}>
+          {mainStack.map((tool) => (
+            <Tag key={tool} bracket={false} tone="inverse">
+              {tool}
+            </Tag>
+          ))}
+        </div>
+      </div>
+      <div style={{ padding: "var(--ev-space-6) var(--ev-gutter) 0" }}>
         <Eyebrow inverse dot="none">
           {d.home.otherTools}
         </Eyebrow>
         <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--ev-space-3)", marginTop: "var(--ev-space-4)" }}>
-          {tools.map((tool) => (
+          {otherTools.map((tool) => (
             <Tag key={tool} bracket={false} tone="inverse">
               {tool}
             </Tag>
@@ -113,10 +149,15 @@ function Experience({ locale }: { locale: Locale }) {
   const d = t(locale);
   return (
     <section style={{ padding: "var(--ev-space-9) var(--ev-gutter)" }}>
-      <h2 className="ev-h3" style={{ marginBottom: "var(--ev-space-6)" }}>
-        {d.home.experience}
-      </h2>
-      <ExperienceRow header titleLabel={d.home.title} companyLabel={d.home.company} yearLabel={d.work.year} />
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "var(--ev-space-6)" }}>
+        <h2 className="ev-h3" style={{ margin: 0 }}>
+          {d.home.experience}
+        </h2>
+        <a href="/cv" className="ev-label">
+          {d.home.moreDetailsInCv} →
+        </a>
+      </div>
+      <ExperienceRow header titleLabel={d.home.title} yearLabel={d.work.year} />
       {workExperience.map((r) => (
         <ExperienceRow key={r.title.en + r.year.en} title={r.title[locale]} company={r.company} year={r.year[locale]} />
       ))}
@@ -124,7 +165,7 @@ function Experience({ locale }: { locale: Locale }) {
       <h2 className="ev-h3" style={{ margin: "var(--ev-space-8) 0 var(--ev-space-6)" }}>
         {d.home.education}
       </h2>
-      <ExperienceRow header titleLabel={d.home.title} companyLabel={d.home.institution} yearLabel={d.work.year} />
+      <ExperienceRow header titleLabel={d.home.title} yearLabel={d.work.year} />
       {education.map((r) => (
         <ExperienceRow key={r.title.en + r.year.en} title={r.title[locale]} company={r.company} year={r.year[locale]} />
       ))}

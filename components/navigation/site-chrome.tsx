@@ -47,7 +47,7 @@ export function SiteChrome({ children, locale }: { children: React.ReactNode; lo
             email={SITE.email}
             headline={d.footer.headline}
             columns={footerColumns}
-            credit={`© 2026 ${SITE.name}`}
+            credit={`© ${new Date().getFullYear()} ${SITE.name}`}
             marqueeText={d.footer.marquee}
           />
           <MenuOverlay

@@ -1,12 +1,16 @@
 /**
  * Generates public/cv.pdf (EN) and public/cv-nl.pdf (NL) from the same data
  * the /cv page renders, so the downloadable files and the on-site CV never
- * drift apart.
+ * drift apart. Also rasterizes every PDF page to public/cv-N.png /
+ * public/cv-nl-N.png (via pdftocairo) and writes public/cv-pages.json with
+ * the page count per locale, since the CV can span more than one page.
  *
  * Run with: npm run generate:cv
  */
+import { execFileSync } from "node:child_process";
+import { readdirSync, unlinkSync, writeFileSync } from "node:fs";
 import { renderToFile, Document, Page, Text, View, StyleSheet } from "@react-pdf/renderer";
-import { SITE, cvProfile, workExperience, education, tools, socials, languages, hobbies, type ExperienceEntry } from "../lib/data";
+import { SITE, cvProfile, workExperience, education, mainStack, otherTools, socials, languages, hobbies, type ExperienceEntry } from "../lib/data";
 import type { Locale } from "../lib/locale";
 
 const INK = "#050505";
@@ -14,9 +18,9 @@ const SECONDARY = "#6E6E6B";
 const HAIRLINE = "#DCDCDA";
 const ACCENT = "#FF6B00";
 
-const LABELS: Record<Locale, { profile: string; experience: string; education: string; languages: string; hobbies: string; tools: string }> = {
-  en: { profile: "Profile", experience: "Experience", education: "Education", languages: "Languages", hobbies: "Hobbies", tools: "Tools" },
-  nl: { profile: "Profiel", experience: "Ervaring", education: "Opleiding", languages: "Talen", hobbies: "Hobby's", tools: "Tools" },
+const LABELS: Record<Locale, { profile: string; experience: string; education: string; languages: string; hobbies: string; mainStack: string; otherTools: string }> = {
+  en: { profile: "Profile", experience: "Experience", education: "Education", languages: "Languages", hobbies: "Hobbies", mainStack: "Main stack", otherTools: "Other tools" },
+  nl: { profile: "Profiel", experience: "Ervaring", education: "Opleiding", languages: "Talen", hobbies: "Hobby's", mainStack: "Main stack", otherTools: "Overige tools" },
 };
 
 const LANGUAGE_NAME: Record<Locale, Record<string, string>> = {
@@ -89,9 +93,8 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: HAIRLINE,
   },
-  rowLeft: { flexDirection: "column", flexGrow: 1, paddingRight: 12 },
+  rowLeft: { flexDirection: "column", flexGrow: 1, flexShrink: 1, flexBasis: 0, paddingRight: 12 },
   rowTitle: { fontFamily: "Helvetica-Bold", fontSize: 9.5, textTransform: "uppercase" },
-  rowCompany: { fontFamily: "Courier", fontSize: 7.5, color: SECONDARY, marginTop: 2 },
   rowDescription: { fontSize: 7.5, lineHeight: 1.25, color: SECONDARY, marginTop: 2 },
   rowYear: { fontFamily: "Courier", fontSize: 7.5, color: SECONDARY, textAlign: "right", minWidth: 100 },
   bulletList: { marginTop: 2, gap: 1.5 },
@@ -119,8 +122,10 @@ function ExperienceRows({ items, locale }: { items: ExperienceEntry[]; locale: L
       {items.map((item) => (
         <View key={item.title.en + item.year.en} style={styles.row} wrap={false}>
           <View style={styles.rowLeft}>
-            <Text style={styles.rowTitle}>{item.title[locale]}</Text>
-            <Text style={styles.rowCompany}>{item.company}</Text>
+            <Text style={styles.rowTitle}>
+              {item.title[locale]} — {item.company}
+            </Text>
+            <Text style={styles.rowDescription}>{item.description[locale]}</Text>
             {item.bullets ? (
               <View style={styles.bulletList}>
                 {item.bullets[locale].map((b) => (
@@ -129,9 +134,7 @@ function ExperienceRows({ items, locale }: { items: ExperienceEntry[]; locale: L
                   </Text>
                 ))}
               </View>
-            ) : (
-              <Text style={styles.rowDescription}>{item.description[locale]}</Text>
-            )}
+            ) : null}
           </View>
           <Text style={styles.rowYear}>{item.year[locale]}</Text>
         </View>
@@ -168,7 +171,7 @@ function CvDocument({ locale }: { locale: Locale }) {
           <ExperienceRows items={workExperience} locale={locale} />
         </View>
 
-        <View style={styles.section}>
+        <View style={styles.section} wrap={false}>
           <Text style={styles.sectionTitle}>{l.education}</Text>
           <ExperienceRows items={education} locale={locale} />
         </View>
@@ -197,9 +200,20 @@ function CvDocument({ locale }: { locale: Locale }) {
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>{l.tools}</Text>
+          <Text style={styles.sectionTitle}>{l.mainStack}</Text>
           <View style={styles.tagWrap}>
-            {tools.map((tool) => (
+            {mainStack.map((tool) => (
+              <Text key={tool} style={styles.tag}>
+                {tool}
+              </Text>
+            ))}
+          </View>
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>{l.otherTools}</Text>
+          <View style={styles.tagWrap}>
+            {otherTools.map((tool) => (
               <Text key={tool} style={styles.tag}>
                 {tool}
               </Text>
@@ -211,11 +225,23 @@ function CvDocument({ locale }: { locale: Locale }) {
   );
 }
 
+function renderPreviewPages(prefix: string): number {
+  for (const f of readdirSync("public")) {
+    if (f.startsWith(`${prefix}-`) && f.endsWith(".png")) unlinkSync(`public/${f}`);
+  }
+  execFileSync("pdftocairo", ["-png", "-scale-to", "1600", `public/${prefix}.pdf`, `public/${prefix}`]);
+  return readdirSync("public").filter((f) => f.startsWith(`${prefix}-`) && f.endsWith(".png")).length;
+}
+
 async function main() {
   await renderToFile(<CvDocument locale="en" />, "public/cv.pdf");
   console.log("Generated public/cv.pdf");
   await renderToFile(<CvDocument locale="nl" />, "public/cv-nl.pdf");
   console.log("Generated public/cv-nl.pdf");
+
+  const pages = { en: renderPreviewPages("cv"), nl: renderPreviewPages("cv-nl") };
+  writeFileSync("public/cv-pages.json", JSON.stringify(pages));
+  console.log(`Generated preview images (en: ${pages.en}, nl: ${pages.nl} pages)`);
 }
 
 main();

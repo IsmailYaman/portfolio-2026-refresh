@@ -1,11 +1,13 @@
 import type { Locale } from "./locale";
+import { experienceYears } from "./data";
+
+const currentYear = new Date().getFullYear();
 
 const dictionary = {
   en: {
     meta: {
       title: "Ismail Kayadelen — Web Developer & Designer",
-      description:
-        "Web developer & designer based in the Netherlands with 3+ years of experience. Specialising in React, TypeScript, Next.js and Laravel — from database design to the last CSS tweak.",
+      description: `Web developer & designer based in the Netherlands with ${experienceYears}+ years of experience. Specialising in React, TypeScript, Next.js and Laravel — from database design to the last CSS tweak.`,
     },
     nav: {
       homepage: "Homepage",
@@ -28,14 +30,17 @@ const dictionary = {
       scrollToExplore: "Scroll to explore",
       featuredWorks: "Featured works",
       viewAllWorks: "View all works",
-      hiIAm: "Hi, I am",
       whatIDo: "What I do",
+      mainStack: "Main stack",
       otherTools: "Other tools",
+      moreDetailsInCv: "More details in CV",
       experience: "Experience",
       education: "Education",
       title: "Title",
-      company: "Company",
-      institution: "Institution",
+      factLocation: "Location",
+      factExperienceValue: `${experienceYears}+ Years`,
+      factRole: "Role",
+      factRoleValue: "Full Stack",
       heroIntro: (
         <>
           Hi, I&rsquo;m currently working at{" "}
@@ -51,7 +56,7 @@ const dictionary = {
       ),
     },
     work: {
-      eyebrow: "Selected work — 2022 / 2026",
+      eyebrow: `Selected work — 2022 / ${currentYear}`,
       title: "Work",
       highlights: "Highlights",
       nextProjects: "Next projects",
@@ -62,8 +67,7 @@ const dictionary = {
     },
     about: {
       title: "About me",
-      badge: "Web developer & designer",
-      toolsIWorkWith: "Tools I work with",
+      badge: "Full stack developer",
     },
     contact: {
       title: "Contact",
@@ -75,11 +79,11 @@ const dictionary = {
       name: "Name",
       namePlaceholder: "Jane Doe",
       email: "Email",
-      emailPlaceholder: "you@studio.com",
+      emailPlaceholder: "you@company.com",
       subject: "Subject",
-      subjectPlaceholder: "Brand identity for a new studio",
+      subjectPlaceholder: "New website for my business",
       message: "Message",
-      messagePlaceholder: "Tell me about the project",
+      messagePlaceholder: "What are you looking to build?",
       send: "Send message",
       sending: "Sending…",
       sent: "Message sent",
@@ -94,8 +98,7 @@ const dictionary = {
   nl: {
     meta: {
       title: "Ismail Kayadelen — Webdeveloper & Designer",
-      description:
-        "Webdeveloper & designer uit Nederland met 3+ jaar ervaring. Gespecialiseerd in React, TypeScript, Next.js en Laravel — van database-ontwerp tot de laatste CSS-tweak.",
+      description: `Webdeveloper & designer uit Nederland met ${experienceYears}+ jaar ervaring. Gespecialiseerd in React, TypeScript, Next.js en Laravel — van database-ontwerp tot de laatste CSS-tweak.`,
     },
     nav: {
       homepage: "Home",
@@ -118,14 +121,17 @@ const dictionary = {
       scrollToExplore: "Scroll om te verkennen",
       featuredWorks: "Uitgelicht werk",
       viewAllWorks: "Bekijk al mijn werk",
-      hiIAm: "Hoi, ik ben",
       whatIDo: "Wat ik doe",
+      mainStack: "Main stack",
       otherTools: "Overige tools",
+      moreDetailsInCv: "Meer details in cv",
       experience: "Ervaring",
       education: "Opleiding",
       title: "Titel",
-      company: "Bedrijf",
-      institution: "School",
+      factLocation: "Locatie",
+      factExperienceValue: `${experienceYears}+ Jaar`,
+      factRole: "Rol",
+      factRoleValue: "Full Stack",
       heroIntro: (
         <>
           Hoi, ik werk momenteel bij{" "}
@@ -141,7 +147,7 @@ const dictionary = {
       ),
     },
     work: {
-      eyebrow: "Geselecteerd werk — 2022 / 2026",
+      eyebrow: `Geselecteerd werk — 2022 / ${currentYear}`,
       title: "Werk",
       highlights: "Hoogtepunten",
       nextProjects: "Volgende projecten",
@@ -152,8 +158,7 @@ const dictionary = {
     },
     about: {
       title: "Over mij",
-      badge: "Webdeveloper & designer",
-      toolsIWorkWith: "Tools waarmee ik werk",
+      badge: "Full stack developer",
     },
     contact: {
       title: "Contact",
@@ -165,11 +170,11 @@ const dictionary = {
       name: "Naam",
       namePlaceholder: "Jan Jansen",
       email: "E-mail",
-      emailPlaceholder: "jij@studio.com",
+      emailPlaceholder: "jij@bedrijf.com",
       subject: "Onderwerp",
-      subjectPlaceholder: "Merkidentiteit voor een nieuwe studio",
+      subjectPlaceholder: "Nieuwe website voor mijn bedrijf",
       message: "Bericht",
-      messagePlaceholder: "Vertel me over het project",
+      messagePlaceholder: "Wat wil je laten bouwen?",
       send: "Bericht versturen",
       sending: "Versturen…",
       sent: "Bericht verstuurd",
