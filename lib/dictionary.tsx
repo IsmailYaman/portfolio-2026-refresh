@@ -6,8 +6,8 @@ const currentYear = new Date().getFullYear();
 const dictionary = {
   en: {
     meta: {
-      title: "Ismail Kayadelen — Web Developer & Designer",
-      description: `Web developer & designer based in the Netherlands with ${experienceYears}+ years of experience. Specialising in React, TypeScript, Next.js and Laravel — from database design to the last CSS tweak.`,
+      title: "Ismail Kayadelen — Full Stack Developer",
+      description: `Full stack developer based in the Netherlands with ${experienceYears}+ years of experience. Specialising in React, TypeScript, Next.js and Laravel — from database design to the last CSS tweak.`,
     },
     nav: {
       homepage: "Homepage",
@@ -97,8 +97,8 @@ const dictionary = {
   },
   nl: {
     meta: {
-      title: "Ismail Kayadelen — Webdeveloper & Designer",
-      description: `Webdeveloper & designer uit Nederland met ${experienceYears}+ jaar ervaring. Gespecialiseerd in React, TypeScript, Next.js en Laravel — van database-ontwerp tot de laatste CSS-tweak.`,
+      title: "Ismail Kayadelen — Full Stack Developer",
+      description: `Full stack developer uit Nederland met ${experienceYears}+ jaar ervaring. Gespecialiseerd in React, TypeScript, Next.js en Laravel — van database-ontwerp tot de laatste CSS-tweak.`,
     },
     nav: {
       homepage: "Home",
