@@ -322,18 +322,18 @@ export const experience: ExperienceEntry[] = [
     type: "Work",
     year: { en: "May 2024 – Present", nl: "Mei 2024 – Heden" },
     description: {
-      en: "Returned to Notive as a frontend developer, building modern web applications and contributing to the technical direction of projects. Also working on backend projects and other technical stuff.",
-      nl: "Teruggekeerd bij Notive als frontend developer, waar ik moderne webapplicaties bouw en meedenk over de technische richting van projecten. Daarnaast werk ik aan backend-projecten en andere technische zaken.",
+      en: "Returned to Notive as a full stack developer, and my day-to-day varies a lot. I work in Scrum, running sprints with the team, and stay in direct contact with clients throughout a project. Over time I've gotten the chance to work across the stack on different projects — from React, Vue, and TypeScript on the frontend to PHP, Python, and even Java for Android, depending on what the job calls for.",
+      nl: "Teruggekeerd bij Notive als fullstack developer, met werkzaamheden die flink uiteenlopen. Ik werk in Scrum, draai mee in sprints met het team en onderhoud rechtstreeks het contact met klanten tijdens een project. Onderweg heb ik de kans gekregen om op verschillende projecten breed inzetbaar te zijn — van React, Vue en TypeScript aan de voorkant tot PHP, Python en zelfs Java voor Android, afhankelijk van wat het project vraagt.",
     },
     bullets: {
       en: [
-        "Developed new software using React, TypeScript, and Laravel",
+        "Developed new software using React, Vue, TypeScript, and Laravel",
         "Provided technical support and software assistance to clients",
         "Delivered workshops and training sessions on Shopify and Framer",
         "Managed client communication and guided projects from kickoff to delivery",
       ],
       nl: [
-        "Nieuwe software ontwikkeld met React, TypeScript en Laravel",
+        "Nieuwe software ontwikkeld met React, Vue, TypeScript en Laravel",
         "Technische ondersteuning en software support verleend aan klanten",
         "Workshops en trainingen gegeven in Shopify en Framer",
         "Klantcommunicatie onderhouden en projecten begeleid van start tot oplevering",
@@ -341,13 +341,13 @@ export const experience: ExperienceEntry[] = [
     },
   },
   {
-    title: { en: "Frontend Developer", nl: "Frontend Developer" },
+    title: { en: "Tech Lead", nl: "Tech Lead" },
     company: "Ventaro",
     type: "Work",
     year: { en: "May 2024 – Present", nl: "Mei 2024 – Heden" },
     description: {
-      en: "Ventaro, a Notive sister company where the focus lies on smaller scale projects. Working on Framer and Shopify projects, and supporting existing clients with questions.",
-      nl: "Ventaro, een zusterbedrijf van Notive gericht op kleinschaligere projecten. Ik werk aan Framer- en Shopify-projecten en ondersteun bestaande klanten met vragen.",
+      en: "Ventaro is Notive's sister company, focused on smaller clients who need something simpler — a straightforward webshop or website. I handle the technical side from start to finish, working in Scrum sprints: setting projects up, building them, and staying on as support once they're live.",
+      nl: "Ventaro is het zusterbedrijf van Notive, gericht op kleinere klanten die iets simpelers nodig hebben — een overzichtelijke webshop of website. Ik verzorg de technische kant van begin tot eind, werkend in Scrum-sprints: de opzet, de bouw, en het onderhoud en de support zodra het live staat.",
     },
     bullets: {
       en: ["Working on Framer and Shopify projects for smaller scale clients", "Supporting existing clients with technical questions"],
@@ -360,8 +360,8 @@ export const experience: ExperienceEntry[] = [
     type: "Work",
     year: { en: "Nov 2024 – Present", nl: "Nov 2024 – Heden" },
     description: {
-      en: "Founded YAMOTION, where I focus on creating websites and webshops for my clients.",
-      nl: "YAMOTION opgericht, waar ik me richt op het bouwen van websites en webshops voor klanten.",
+      en: "My own business, where I help clients get their venture off the ground with a website or webshop. I handle everything myself, from the first client conversation to development and ongoing management.",
+      nl: "Mijn eigen onderneming, waarmee ik klanten help hun bedrijf van de grond te krijgen met een website of webshop. Ik doe alles zelf, van het eerste klantgesprek tot de ontwikkeling en het beheer erna.",
     },
     bullets: {
       en: ["Building Framer websites and Shopify webshops for clients", "Handling everything from client communication to delivery"],
@@ -374,8 +374,8 @@ export const experience: ExperienceEntry[] = [
     type: "Work",
     year: { en: "Sep 2023 – Feb 2024", nl: "Sep 2023 – Feb 2024" },
     description: {
-      en: "Completed my thesis internship focusing on XR development, exploring immersive technologies and their applications in the healthcare industry.",
-      nl: "Afstudeerstage gericht op XR-development, waarbij ik immersieve technologieën en hun toepassingen binnen de zorgsector heb onderzocht.",
+      en: "My thesis project, built around one question: how can web-AR help inexperienced people become more aware of the right actions to take during first aid for a heart attack? I ran the research myself — interviews with professionals and people involved, surveys, and the conclusions that came out of it — and used that to build an interactive web-AR experience to raise that awareness.",
+      nl: "Mijn afstudeerproject, met als hoofdvraag: hoe kan web-AR onervaren mensen bewuster maken van de juiste handelingen bij eerste hulp tijdens een hartaanval? Het onderzoek heb ik zelf uitgevoerd — interviews met professionals en betrokkenen, enquêtes en de conclusies die daaruit volgden — en op basis daarvan een interactieve web-AR-ervaring gebouwd om die bewustwording te vergroten.",
     },
     bullets: {
       en: [
@@ -396,12 +396,12 @@ export const experience: ExperienceEntry[] = [
     type: "Work",
     year: { en: "Aug 2022 – Sep 2023", nl: "Aug 2022 – Sep 2023" },
     description: {
-      en: "Developed user interfaces and dashboards, collaborating with design and backend teams to deliver high-quality digital products.",
-      nl: "Interfaces en dashboards ontwikkeld, in samenwerking met design- en backendteams om hoogwaardige digitale producten op te leveren.",
+      en: "Started here part-time, working on a single ongoing project: an IoT system with a connected dashboard. I worked in Scrum alongside teams of designers and data scientists, and handled processing the incoming data into the dashboard.",
+      nl: "Hier parttime begonnen en gewerkt aan één doorlopend project: een IoT-systeem met een gekoppeld dashboard. Ik werkte in Scrum samen met teams van designers en data scientists, en verwerkte de binnenkomende data in het dashboard.",
     },
     bullets: {
-      en: ["Contributed to a variety of projects within multidisciplinary teams", "Participated in and organised retrospectives, reviews, and other Scrum events"],
-      nl: ["Meegewerkt aan diverse projecten binnen multidisciplinaire teams", "Retrospectives, reviews en andere Scrum events bijgewoond en (mede) georganiseerd"],
+      en: ["Helped develop an IoT system with a connected dashboard", "Processed incoming data into the dashboard", "Participated in and organised retrospectives, reviews, and other Scrum events"],
+      nl: ["Meegewerkt aan een IoT-systeem met een gekoppeld dashboard", "Binnenkomende data verwerkt in het dashboard", "Retrospectives, reviews en andere Scrum events bijgewoond en (mede) georganiseerd"],
     },
   },
   {
@@ -410,8 +410,8 @@ export const experience: ExperienceEntry[] = [
     type: "Work",
     year: { en: "Aug 2020 – Jan 2021", nl: "Aug 2020 – Jan 2021" },
     description: {
-      en: "Started my professional journey as a frontend development intern, learning industry practices and contributing to real-world projects.",
-      nl: "Startte mijn professionele carrière als frontend development stagiair, waar ik de praktijk leerde kennen en meewerkte aan echte projecten.",
+      en: "Started my professional journey here as a frontend development intern. I sat in on a range of projects within a Scrum team, joining daily standups, sprint reviews, and retrospectives to get a feel for how a real dev team operates.",
+      nl: "Startte hier mijn professionele carrière als frontend development stagiair. Ik liep mee op verschillende projecten binnen een Scrumteam en sloot aan bij dagelijkse standups, sprint reviews en retrospectives om te ervaren hoe een echt ontwikkelteam werkt.",
     },
     bullets: {
       en: ["Learned industry practices and professional workflows", "Contributed to real-world client projects"],
@@ -510,7 +510,7 @@ export const skills: Skill[] = [
   },
 ];
 
-export const mainStack = ["React", "Next.js", "TypeScript", "Laravel", "PHP", "Tailwind", "Git", "Docker", "Vercel", "Python", "Kotlin", "Jetpack Compose"];
+export const mainStack = ["React", "Vue", "Next.js", "TypeScript", "Laravel", "PHP", "Tailwind", "Git", "Docker", "Vercel", "Python", "Kotlin", "Jetpack Compose"];
 
 export const otherTools = ["Figma", "Framer", "Shopify", "Blender", "Jira", "Claude", "Gemini", "ChatGPT"];
 
